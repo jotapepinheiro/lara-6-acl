@@ -16,13 +16,13 @@ class AclSetupTables extends Migration
 
         Schema::create('perfis', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->unique();
-            $table->string('display_name')->nullable();
-            $table->string('description')->nullable();
+            $table->string('nome');
+            $table->string('slug')->unique();
+            $table->string('descricao')->nullable();
             $table->timestamps();
         });
 
-        Schema::create('perfil_usuario', function (Blueprint $table) {
+        Schema::create('usuario_perfil', function (Blueprint $table) {
             $table->bigInteger('usuario_id')->unsigned();
             $table->bigInteger('perfil_id')->unsigned();
 
@@ -36,17 +36,17 @@ class AclSetupTables extends Migration
 
         Schema::create('telas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->unique();
-            $table->string('display_name')->nullable();
-            $table->string('description')->nullable();
+            $table->string('nome');
+            $table->string('slug')->unique();
+            $table->string('descricao')->nullable();
             $table->timestamps();
         });
 
         Schema::create('modulos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->unique();
-            $table->string('display_name')->nullable();
-            $table->string('description')->nullable();
+            $table->string('nome');
+            $table->string('slug')->unique();
+            $table->string('descricao')->nullable();
             $table->timestamps();
         });
 
@@ -64,37 +64,49 @@ class AclSetupTables extends Migration
 
         Schema::create('permissoes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->unique();
-            $table->string('display_name')->nullable();
-            $table->string('description')->nullable();
+            $table->string('nome');
+            $table->string('slug')->unique();
+            $table->string('descricao')->nullable();
             $table->timestamps();
         });
 
-        Schema::create('permissao_perfil_tela', function (Blueprint $table) {
-            $table->bigInteger('permissao_id')->unsigned();
+        Schema::create('perfil_tela_permissao', function (Blueprint $table) {
             $table->bigInteger('perfil_id')->unsigned();
             $table->bigInteger('tela_id')->unsigned();
+            $table->bigInteger('permissao_id')->unsigned();
 
-            $table->foreign('permissao_id')->references('id')->on('permissoes')
-                ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('perfil_id')->references('id')->on('perfis')
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('tela_id')->references('id')->on('telas')
                 ->onUpdate('cascade')->onDelete('cascade');
-
-            $table->primary(['permissao_id', 'perfil_id', 'tela_id']);
-        });
-
-        Schema::create('permissao_tela', function (Blueprint $table) {
-            $table->bigInteger('permissao_id')->unsigned();
-            $table->bigInteger('tela_id')->unsigned();
-
             $table->foreign('permissao_id')->references('id')->on('permissoes')
                 ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('tela_id')->references('id')->on('telas')
+
+            $table->primary(['perfil_id', 'tela_id', 'permissao_id']);
+        });
+
+        Schema::create('perfil_permissao', function (Blueprint $table) {
+            $table->bigInteger('perfil_id')->unsigned();
+            $table->bigInteger('permissao_id')->unsigned();
+
+            $table->foreign('perfil_id')->references('id')->on('perfis')
+                ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('permissao_id')->references('id')->on('permissoes')
                 ->onUpdate('cascade')->onDelete('cascade');
 
-            $table->primary(['permissao_id', 'tela_id']);
+            $table->primary(['perfil_id', 'permissao_id']);
+        });
+
+        Schema::create('usuario_permissao', function (Blueprint $table) {
+            $table->unsignedBigInteger('usuario_id');
+            $table->unsignedBigInteger('permissao_id');
+
+            $table->foreign('usuario_id')->references('id')->on('usuarios')
+                ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('permissao_id')->references('id')->on('permissoes')
+                ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->primary(['usuario_id', 'permissao_id']);
         });
 
         DB::commit();
@@ -107,13 +119,14 @@ class AclSetupTables extends Migration
      */
     public function down()
     {
-        Schema::drop('permissao_tela');
-        Schema::drop('permissao_perfil_tela');
+        Schema::drop('usuario_permissao');
+        Schema::drop('perfil_permissao');
+        Schema::drop('perfil_tela_permissao');
         Schema::drop('permissoes');
         Schema::drop('modulo_tela');
         Schema::drop('modulos');
         Schema::drop('telas');
-        Schema::drop('perfil_usuario');
+        Schema::drop('usuario_perfil');
         Schema::drop('perfis');
     }
 }
