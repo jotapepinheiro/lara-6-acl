@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 
-use App\Perfil;
+use App\Model\Acl\Perfil;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

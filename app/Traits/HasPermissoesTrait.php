@@ -1,8 +1,8 @@
 <?php
 namespace App\Traits;
 
-use App\Permissao;
-use App\Perfil;
+use App\Model\Acl\Permissao;
+use App\Model\Acl\Perfil;
 
 trait HasPermissoesTrait {
 
