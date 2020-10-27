@@ -4,16 +4,12 @@ namespace App\Model\Acl;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\Facades\AclFacade as Acl;
-use App\Traits\AclUsuarioTrait;
+use App\Traits\AclPermissaoUsuarioTrait;
 
 class Usuario extends Authenticatable
 {
     use Notifiable;
-    //use HasPermissoesTrait;
-    use AclUsuarioTrait {
-        can as platformCan;
-    }
+    use AclPermissaoUsuarioTrait;
 
     protected $table = 'usuarios';
 
@@ -41,22 +37,9 @@ class Usuario extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'email_verified_at' => 'datetime:d/m/Y H:i:s',
+        'created_at' => 'datetime:d/m/Y H:i:s',
+        'updated_at' => 'datetime:d/m/Y H:i:s',
     ];
 
-    /**
-     * Define all permissions for role Super Admin
-     *
-     * @param string $permission
-     * @param bool $requireAll
-     * @return bool
-     */
-    public function can($permission, $requireAll = false)
-    {
-        if (Acl::hasRole('super', $requireAll)) {
-            return true;
-        }
-
-        return $this->platformCan($permission, $requireAll);
-    }
 }

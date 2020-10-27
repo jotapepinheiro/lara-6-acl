@@ -5,7 +5,7 @@
         <div class="row">
             @include('includes.sidebar')
 
-            @role('super', 'admin')
+            @role(['super', 'admin'])
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">Adicionar Usuário</div>

@@ -45,7 +45,7 @@ class UsuariosTableSeeder extends Seeder
             'created_at'  => Carbon::now()
         ]);
         $tecnico->perfis()->sync([3]);
-        $tecnico->permissoes()->sync([5,9]);
+        $tecnico->permissoes()->sync([15]);
 
         // CADATRAR 50 USUARIOS TECNICOS
         $faker = Faker::create();

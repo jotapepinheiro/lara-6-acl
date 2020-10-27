@@ -3,7 +3,6 @@
 namespace App\Traits;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Cache\TaggableStore;
 use App\Model\Acl\Permissao;
@@ -18,7 +17,7 @@ trait AclPerfilTrait
         $rolePrimaryKey = $this->primaryKey;
         $cacheKey = 'acl_permissoes_do_perfil_' . $this->$rolePrimaryKey;
         if (Cache::getStore() instanceof TaggableStore) {
-            return Cache::tags('perfil_permissao')->remember($cacheKey, Config::get('cache.ttl', 60), function () {
+            return Cache::tags('perfil_permissao')->remember($cacheKey, now()->addMinutes(60), function () {
                 return $this->permissoes()->get();
             });
         } else return $this->permissoes()->get();

@@ -3,7 +3,6 @@
 namespace App\Traits;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Cache\TaggableStore;
 use InvalidArgumentException;
@@ -24,7 +23,7 @@ trait AclUsuarioTrait
         $userPrimaryKey = $this->primaryKey;
         $cacheKey = 'acl_perfis_do_usuario_'.$this->$userPrimaryKey;
         if(Cache::getStore() instanceof TaggableStore) {
-            return Cache::tags('usuario_perfil')->remember($cacheKey, Config::get('cache.ttl'), function () {
+            return Cache::tags('usuario_perfil')->remember($cacheKey, 10, function () {
                 return $this->perfis()->get();
             });
         }
@@ -317,14 +316,15 @@ trait AclUsuarioTrait
     /**
      *Filtering users according to their role
      *
-     *@param string $role
-     *@return users collection
+     * @param $query
+     * @param string $role
+     * @return Usuario collection
      */
-    public function scopeWithRole($query, $role)
+    public function scopeWithRole($query, string $role)
     {
-        return $query->whereHas('roles', function ($query) use ($role)
+        return $query->whereHas('perfis', function ($query) use ($role)
         {
-            $query->where('name', $role);
+            $query->where('slug', $role);
         });
     }
 }
