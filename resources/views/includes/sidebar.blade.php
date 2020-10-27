@@ -5,7 +5,7 @@
         </div>
 
         <div class="card-body">
-            @perfil('super')
+            @role('super')
             <ul class="nav" role="tablist">
                 <li role="presentation">
                     <a href="{{ url('/admin/usuarios') }}">
@@ -35,8 +35,8 @@
                     </a>
                 </li>
             </ul>
-            @endPerfil
-            @perfil('admin')
+            @endrole
+            @role('admin')
             <ul class="nav" role="tablist">
                 <li role="presentation">
                     <a href="{{ url('/admin/usuarios') }}">
@@ -58,8 +58,8 @@
                     </a>
                 </li>
             </ul>
-            @endPerfil
-            @perfil('manager')
+            @endrole
+            @role('manager')
             <ul class="nav" role="tablist">
                 <li role="presentation">
                     <a href="{{ url('/admin/clientes') }}">
@@ -67,8 +67,8 @@
                     </a>
                 </li>
             </ul>
-            @endPerfil
-            @perfil('user')
+            @endrole
+            @role('user')
             <ul class="nav" role="tablist">
                 <li role="presentation">
                     <a href="{{ url('/admin/clientes') }}">
@@ -76,7 +76,7 @@
                     </a>
                 </li>
             </ul>
-            @endPerfil
+            @endrole
         </div>
     </div>
 </div>

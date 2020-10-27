@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
+use App\Facades\AclFacade as Acl;
 
 class HomeController extends Controller
 {
@@ -18,10 +18,10 @@ class HomeController extends Controller
 
     public function home()
     {
-        $super = Auth::user()->hasPerfil('super');
-        $admin = Auth::user()->hasPerfil('admin');
-        $manager = Auth::user()->hasPerfil('manager');
-        $user = Auth::user()->hasPerfil('user');
+        $super = Acl::hasRole('super');
+        $admin = Acl::hasRole('admin');
+        $manager = Acl::hasRole('manager');
+        $user = Acl::hasRole('user');
 
         if($super || $admin) {
             return redirect('/admin/usuarios');

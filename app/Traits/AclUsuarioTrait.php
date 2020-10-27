@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Cache\TaggableStore;
 use InvalidArgumentException;
+use App\Model\Acl\Permissao;
 use Illuminate\Support\Str;
 use App\Model\Acl\Usuario;
 use App\Model\Acl\Perfil;
@@ -76,6 +77,17 @@ trait AclUsuarioTrait
     }
 
     /**
+     * Many-to-Many relations with the permission model.
+     * Named "perms" for backwards compatibility. Also because "perms" is short and sweet.
+     *
+     * @return BelongsToMany
+     */
+    public function permissoes()
+    {
+        return $this->belongsToMany(Permissao::class, 'usuario_permissao', 'usuario_id', 'permissao_id');
+    }
+
+    /**
      * Boot the user model
      * Attach event listener to remove the many-to-many records when trying to delete
      * Will NOT delete any records if the user model uses soft deletes.
@@ -98,15 +110,15 @@ trait AclUsuarioTrait
     /**
      * Checks if the user has a role by its name.
      *
-     * @param string|array $name       Role name or array of role names.
+     * @param string|array $slug       Role name or array of role names.
      * @param bool         $requireAll All roles in the array are required.
      *
      * @return bool
      */
-    public function hasRole($name, $requireAll = false)
+    public function hasRole($slug, $requireAll = false)
     {
-        if (is_array($name)) {
-            foreach ($name as $roleName) {
+        if (is_array($slug)) {
+            foreach ($slug as $roleName) {
                 $hasRole = $this->hasRole($roleName);
 
                 if ($hasRole && !$requireAll) {
@@ -122,7 +134,7 @@ trait AclUsuarioTrait
             return $requireAll;
         } else {
             foreach ($this->cachedRoles() as $role) {
-                if ($role->name == $name) {
+                if ($role->slug == $slug) {
                     return true;
                 }
             }
@@ -160,7 +172,7 @@ trait AclUsuarioTrait
             foreach ($this->cachedRoles() as $role) {
                 // Validate against the Permission table
                 foreach ($role->cachedPermissions() as $perm) {
-                    if (Str::is( $permission, $perm->name) ) {
+                    if (Str::is( $permission, $perm->slug) ) {
                         return true;
                     }
                 }

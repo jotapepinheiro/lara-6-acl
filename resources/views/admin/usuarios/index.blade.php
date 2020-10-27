@@ -5,10 +5,10 @@
         <div class="row">
             @include('includes.sidebar')
 
-            @perfil('super', 'admin')
+            @role('super', 'admin')
             <div class="col-md-9">
                 <div class="card">
-                    @perfil('super', 'manager')
+                    @role('super', 'manager')
                     <div class="card-header">Usuários</div>
                     <div class="card-body">
                         <a href="{{ url('/admin/usuarios/create') }}" class="btn btn-success btn-sm" title="Adicionar Usuário">
@@ -25,7 +25,7 @@
                                 </span>
                             </div>
                         </form>
-                    @endPerfil
+                    @endrole
                         <br/>
                         <br/>
                         <div class="table-responsive">
@@ -41,7 +41,7 @@
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->name }}</td><td>{{ $item->email }}</td>
                                         <td>
-                                        @perfil('super', 'admin')
+                                        @role('super', 'admin')
                                             <a href="{{ url('/admin/usuarios/' . $item->id) }}" title="Ver Usuário"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i>  Ver</button></a>
                                             <a href="{{ url('/admin/usuarios/' . $item->id . '/edit') }}" title="Edit User"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
 
@@ -50,7 +50,7 @@
                                                 {{ csrf_field() }}
                                                 <button type="submit" class="btn btn-danger btn-sm" title="Deletar Usuário" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Deletar</button>
                                             </form>
-                                        @endPerfil
+                                        @endrole
                                         </td>
                                     </tr>
                                 @endforeach
@@ -62,7 +62,7 @@
                     </div>
                 </div>
             </div>
-            @endPerfil
+            @endrole
         </div>
     </div>
 @endsection

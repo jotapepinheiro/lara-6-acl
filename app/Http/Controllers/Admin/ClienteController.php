@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Facades\AclFacade as Acl;
 use App\Http\Controllers\Controller;
-
-use App\Model\Cliente;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Model\Cliente;
 
 class ClienteController extends Controller
 {
@@ -17,7 +16,7 @@ class ClienteController extends Controller
 
     public function index(Request $request)
     {
-        $auth = Auth::user()->hasPerfil('super', 'manager', 'user');
+        $auth = Acl::hasRole(['super', 'tecnico', 'user']);
 
         if((!$auth)){
             return view('home');
@@ -39,7 +38,7 @@ class ClienteController extends Controller
 
     public function create()
     {
-        $auth = Auth::user()->hasPerfil('super', 'manager');
+        $auth = Acl::hasRole(['super', 'tecnico']);
 
         if((!$auth)){
             return view('home');
@@ -50,7 +49,7 @@ class ClienteController extends Controller
 
     public function store(Request $request)
     {
-        $auth = Auth::user()->hasPerfil('super', 'manager');
+        $auth = Acl::hasRole(['super', 'tecnico']);
 
         if((!$auth)){
             return view('home');
@@ -66,7 +65,7 @@ class ClienteController extends Controller
 
     public function show($id)
     {
-        $auth = Auth::user()->hasPerfil('super', 'manager');
+        $auth = Acl::hasRole(['super', 'tecnico']);
 
         if((!$auth)){
             return view('home');
@@ -79,7 +78,7 @@ class ClienteController extends Controller
 
     public function edit($id)
     {
-        $auth = Auth::user()->hasPerfil('super', 'manager');
+        $auth = Acl::hasRole(['super', 'tecnico']);
 
         if((!$auth)){
             return view('home');
@@ -92,7 +91,7 @@ class ClienteController extends Controller
 
     public function update(Request $request, $id)
     {
-        $auth = Auth::user()->hasPerfil('super', 'manager');
+        $auth = Acl::hasRole(['super', 'tecnico']);
 
         if((!$auth)){
             return view('home');
@@ -109,7 +108,7 @@ class ClienteController extends Controller
 
     public function destroy($id)
     {
-        $auth = Auth::user()->hasPerfil('super', 'manager');
+        $auth = Acl::hasRole(['super', 'tecnico']);
 
         if((!$auth)){
             return view('home');

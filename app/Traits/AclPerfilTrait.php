@@ -15,8 +15,8 @@ trait AclPerfilTrait
     //Big block of caching functionality.
     public function cachedPermissions()
     {
-        $perfilPrimaryKey = $this->primaryKey;
-        $cacheKey = 'acl_permissoes_do_perfil_' . $this->$perfilPrimaryKey;
+        $rolePrimaryKey = $this->primaryKey;
+        $cacheKey = 'acl_permissoes_do_perfil_' . $this->$rolePrimaryKey;
         if (Cache::getStore() instanceof TaggableStore) {
             return Cache::tags('perfil_permissao')->remember($cacheKey, Config::get('cache.ttl', 60), function () {
                 return $this->permissoes()->get();
@@ -89,10 +89,10 @@ trait AclPerfilTrait
     {
         parent::boot();
 
-        static::deleting(function ($perfil) {
+        static::deleting(function ($role) {
             if (!method_exists(Perfil::class, 'bootSoftDeletes')) {
-                $perfil->usuarios()->sync([]);
-                $perfil->permissoes()->sync([]);
+                $role->usuarios()->sync([]);
+                $role->permissoes()->sync([]);
             }
 
             return true;
@@ -102,15 +102,15 @@ trait AclPerfilTrait
     /**
      * Checks if the role has a permission by its name.
      *
-     * @param string|array $name Permission name or array of permission names.
+     * @param string|array $slug Permission name or array of permission names.
      * @param bool $requireAll All permissions in the array are required.
      *
      * @return bool
      */
-    public function hasPermission($name, $requireAll = false)
+    public function hasPermission($slug, $requireAll = false)
     {
-        if (is_array($name)) {
-            foreach ($name as $permissionName) {
+        if (is_array($slug)) {
+            foreach ($slug as $permissionName) {
                 $hasPermission = $this->hasPermission($permissionName);
 
                 if ($hasPermission && !$requireAll) {
@@ -126,7 +126,7 @@ trait AclPerfilTrait
             return $requireAll;
         } else {
             foreach ($this->cachedPermissions() as $permission) {
-                if ($permission->name == $name) {
+                if ($permission->slug == $slug) {
                     return true;
                 }
             }

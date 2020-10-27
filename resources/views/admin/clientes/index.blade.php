@@ -5,10 +5,10 @@
         <div class="row">
             @include('includes.sidebar')
 
-            @perfil('super', 'manager', 'user')
+            @role('super', 'manager', 'user')
             <div class="col-md-9">
                 <div class="card">
-                    @perfil('super', 'manager')
+                    @role('super', 'manager')
                     <div class="card-header">Clientes</div>
                     <div class="card-body">
                         <a href="{{ url('/admin/clientes/create') }}" class="btn btn-success btn-sm" title="Adicionar Cliente">
@@ -25,14 +25,14 @@
                                 </span>
                             </div>
                         </form>
-                    @endPerfil
+                    @endrole
                         <br/>
                         <br/>
                         <div class="table-responsive">
                             <table class="table table-sm">
                                 <thead>
                                     <tr>
-                                        <th>ID</th><th>Name</th><th>Email</th>@perfil('super', 'manager')<th>Ações</th>@endPerfil
+                                        <th>ID</th><th>Name</th><th>Email</th>@role('super', 'manager')<th>Ações</th>@endrole
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -41,7 +41,7 @@
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->name }}</td><td>{{ $item->email }}</td>
                                         <td>
-                                @perfil('super', 'manager')
+                                @role('super', 'manager')
                                             <a href="{{ url('/admin/clientes/' . $item->id) }}" title=" Ver Client"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i>  Ver</button></a>
                                             <a href="{{ url('/admin/clientes/' . $item->id . '/edit') }}" title="Edit Client"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
@@ -50,7 +50,7 @@
                                                 {{ csrf_field() }}
                                                 <button type="submit" class="btn btn-danger btn-sm" title="Delete Client" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                                             </form>
-                                @endPerfil
+                                @endrole
                                         </td>
                                     </tr>
                                 @endforeach
@@ -62,7 +62,7 @@
                     </div>
                 </div>
             </div>
-            @endPerfil
+            @endrole
         </div>
     </div>
 @endsection

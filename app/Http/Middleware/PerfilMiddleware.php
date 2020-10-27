@@ -12,17 +12,17 @@ class PerfilMiddleware
      *
      * @param Request $request
      * @param Closure $next
-     * @param $perfil
+     * @param $role
      * @param null $permissao
      * @return mixed
      */
-    public function handle(Request $request, Closure $next, $perfil, $permissao = null)
+    public function handle(Request $request, Closure $next, $role, $permissao = null)
     {
-        if ($request->user()->hasPerfil('super')) {
+        if ($request->user()->hasRole('super')) {
             return $next($request);
         }
 
-        if(!$request->user()->hasPerfil($perfil)) {
+        if(!$request->user()->hasRole($role)) {
             abort(404);
         }
 

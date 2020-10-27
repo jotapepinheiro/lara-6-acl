@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Facades\AclFacade as Acl;
 use App\Http\Controllers\Controller;
 
 use App\Model\Acl\Permissao;
@@ -17,7 +18,7 @@ class PermissaoController extends Controller
 
     public function index(Request $request)
     {
-        $auth = Auth::user()->hasPerfil('super', 'admin');
+        $auth = Acl::hasRole(['super', 'admin']);
 
         if((!$auth)){
             return view('home');
@@ -39,7 +40,7 @@ class PermissaoController extends Controller
 
     public function create()
     {
-        $auth = Auth::user()->hasPerfil('super', 'admin');
+        $auth = Acl::hasRole(['super', 'admin']);
 
         if((!$auth)){
             return view('home');
@@ -50,7 +51,7 @@ class PermissaoController extends Controller
 
     public function store(Request $request)
     {
-        $auth = Auth::user()->hasPerfil('super', 'admin');
+        $auth = Acl::hasRole(['super', 'admin']);
 
         if((!$auth)){
             return view('home');
@@ -66,7 +67,7 @@ class PermissaoController extends Controller
 
     public function show($id)
     {
-        $auth = Auth::user()->hasPerfil('super', 'admin');
+        $auth = Acl::hasRole(['super', 'admin']);
 
         if((!$auth)){
             return view('home');
@@ -79,7 +80,7 @@ class PermissaoController extends Controller
 
     public function edit($id)
     {
-        $auth = Auth::user()->hasPerfil('super', 'admin');
+        $auth = Acl::hasRole(['super', 'admin']);
 
         if((!$auth)){
             return view('home');
@@ -92,7 +93,7 @@ class PermissaoController extends Controller
 
     public function update(Request $request, $id)
     {
-        $auth = Auth::user()->hasPerfil('super', 'admin');
+        $auth = Acl::hasRole(['super', 'admin']);
 
         if((!$auth)){
             return view('home');
@@ -109,7 +110,7 @@ class PermissaoController extends Controller
 
     public function destroy($id)
     {
-        $auth = Auth::user()->hasPerfil('super', 'admin');
+        $auth = Acl::hasRole(['super', 'admin']);
 
         if((!$auth)){
             return view('home');

@@ -8,7 +8,7 @@ Route::get('/home', 'HomeController@home')->name('home');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 
-    Route::group(['middleware' => ['perfil:admin']], function () {
+    Route::group(['middleware' => ['role:super|admin']], function () {
         Route::resource('usuarios', 'Admin\UsuarioController');
         Route::resource('perfis', 'Admin\PerfilController');
         Route::resource('permissoes', 'Admin\PermissaoController');

@@ -1,8 +1,9 @@
 <?php
 
-use App\Usuario;
+use App\Model\Acl\Usuario;
 use Carbon\Carbon;
 use Faker\Factory as Faker;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Database\Seeder;
 
 class UsuariosTableSeeder extends Seeder
@@ -11,6 +12,7 @@ class UsuariosTableSeeder extends Seeder
      * Run the database seeds.
      *
      * @return void
+     * @throws BindingResolutionException
      */
     public function run()
     {
@@ -21,25 +23,29 @@ class UsuariosTableSeeder extends Seeder
             'password'          => app('hash')->make('super'),
             'email_verified_at' => Carbon::now()->add(1, 'hour'),
             'created_at'        => Carbon::now()
-        ])->roles()->sync([1]);
+        ])->perfis()->sync([1]);
 
         // CADATRAR ADMIN
-        Usuario::create([
+        $admin = Usuario::create([
             'name'        => 'Admin',
             'email'       => 'admin@admin.com',
             'password'    => app('hash')->make('admin'),
             'email_verified_at' => Carbon::now()->add(2, 'hour'),
             'created_at'  => Carbon::now()
-        ])->roles()->sync([2]);
+        ]);
+        $admin->perfis()->sync([2]);
+        $admin->permissoes()->sync([6,10]);
 
         // CADATRAR TECNICO
-        Usuario::create([
+        $tecnico = Usuario::create([
             'name'        => 'Tecnico',
             'email'       => 'tecnico@tecnico.com',
             'password'    => app('hash')->make('tecnico'),
             'email_verified_at' => Carbon::now()->add(2, 'hour'),
             'created_at'  => Carbon::now()
-        ])->roles()->sync([3]);
+        ]);
+        $tecnico->perfis()->sync([3]);
+        $tecnico->permissoes()->sync([5,9]);
 
         // CADATRAR 50 USUARIOS TECNICOS
         $faker = Faker::create();
@@ -55,7 +61,7 @@ class UsuariosTableSeeder extends Seeder
                 'email_verified_at' => Carbon::parse($date)->addHour(rand(1, 12)),
                 'created_at'  => $date,
                 'updated_at'  => Carbon::parse($date)->addDay(rand(1, 28))->addHour(rand(1, 12))
-            ])->roles()->sync([3]);
+            ])->perfis()->sync([4]);
         }
     }
 }

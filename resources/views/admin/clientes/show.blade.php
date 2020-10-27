@@ -5,7 +5,7 @@
         <div class="row">
             @include('includes.sidebar')
 
-            @perfil('super', 'manager')
+            @role('super', 'manager')
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">Cliente {{ $cliente->id }}</div>
@@ -36,7 +36,7 @@
                     </div>
                 </div>
             </div>
-            @endPerfil
+            @endrole
         </div>
     </div>
 @endsection

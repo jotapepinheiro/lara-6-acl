@@ -2,12 +2,10 @@
 
 namespace App\Model\Acl;
 
-use App\Traits\AclUsuarioTrait;
-use App\Traits\HasPermissoesTrait;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Auth;
+use App\Facades\AclFacade as Acl;
+use App\Traits\AclUsuarioTrait;
 
 class Usuario extends Authenticatable
 {
@@ -55,7 +53,7 @@ class Usuario extends Authenticatable
      */
     public function can($permission, $requireAll = false)
     {
-        if (Auth::user()->hasRole('super')) {
+        if (Acl::hasRole('super', $requireAll)) {
             return true;
         }
 

@@ -5,7 +5,7 @@
         <div class="row">
             @include('includes.sidebar')
 
-            @perfil('super', 'admin')
+            @role('super', 'admin')
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">Perfis</div>
@@ -58,7 +58,7 @@
                     </div>
                 </div>
             </div>
-            @endPerfil
+            @endrole
         </div>
     </div>
 @endsection

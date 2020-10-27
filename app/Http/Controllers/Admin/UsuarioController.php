@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Facades\AclFacade as Acl;
 use App\Http\Controllers\Controller;
-
 use App\Model\Acl\Usuario;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class UsuarioController extends Controller
 {
@@ -18,7 +17,7 @@ class UsuarioController extends Controller
 
     public function index(Request $request)
     {
-        $auth = Auth::user()->hasPerfil('super', 'admin');
+        $auth = Acl::hasRole(['super', 'admin']);
 
         if((!$auth)){
             return view('home');
@@ -42,7 +41,7 @@ class UsuarioController extends Controller
 
     public function create()
     {
-        $auth = Auth::user()->hasPerfil('super', 'admin');
+        $auth = Acl::hasRole(['super', 'admin']);
 
         if((!$auth)){
             return view('home');
@@ -53,7 +52,7 @@ class UsuarioController extends Controller
 
     public function store(Request $request)
     {
-        $auth = Auth::user()->hasPerfil('super', 'admin');
+        $auth = Acl::hasRole(['super', 'admin']);
 
         if((!$auth)){
             return view('home');
@@ -69,7 +68,7 @@ class UsuarioController extends Controller
 
     public function show($id)
     {
-        $auth = Auth::user()->hasPerfil('super', 'admin');
+        $auth = Acl::hasRole(['super', 'admin']);
 
         if((!$auth)){
             return view('home');
@@ -82,7 +81,7 @@ class UsuarioController extends Controller
 
     public function edit($id)
     {
-        $auth = Auth::user()->hasPerfil('super', 'admin');
+        $auth = Acl::hasRole(['super', 'admin']);
 
         if((!$auth)){
             return view('home');
@@ -95,7 +94,7 @@ class UsuarioController extends Controller
 
     public function update(Request $request, $id)
     {
-        $auth = Auth::user()->hasPerfil('super', 'admin');
+        $auth = Acl::hasRole(['super', 'admin']);
 
         if((!$auth)){
             return view('home');
@@ -112,7 +111,7 @@ class UsuarioController extends Controller
 
     public function destroy($id)
     {
-        $auth = Auth::user()->hasPerfil('super', 'admin');
+        $auth = Acl::hasRole(['super', 'admin']);
 
         if((!$auth)){
             return view('home');

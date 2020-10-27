@@ -4,9 +4,7 @@ namespace App\Traits;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use App\Model\Acl\Permissao;
-use App\Model\Acl\Usuario;
 use App\Model\Acl\Perfil;
-use App\Model\Acl\Tela;
 
 trait AclPermissaoTrait
 {

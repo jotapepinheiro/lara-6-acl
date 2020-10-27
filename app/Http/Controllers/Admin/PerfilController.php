@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Facades\AclFacade as Acl;
 use App\Http\Controllers\Controller;
 
 use App\Model\Acl\Perfil;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class PerfilController extends Controller
 {
@@ -17,7 +17,7 @@ class PerfilController extends Controller
 
     public function index(Request $request)
     {
-        $auth = Auth::user()->hasPerfil('super', 'admin');
+        $auth = Acl::hasRole(['super', 'admin']);
 
         if((!$auth)){
             return view('home');
@@ -40,7 +40,7 @@ class PerfilController extends Controller
 
     public function create()
     {
-        $auth = Auth::user()->hasPerfil('super', 'admin');
+        $auth = Acl::hasRole(['super', 'admin']);
 
         if((!$auth)){
             return view('home');
@@ -51,7 +51,7 @@ class PerfilController extends Controller
 
     public function store(Request $request)
     {
-        $auth = Auth::user()->hasPerfil('super', 'admin');
+        $auth = Acl::hasRole(['super', 'admin']);
 
         if((!$auth)){
             return view('home');
@@ -67,7 +67,7 @@ class PerfilController extends Controller
 
     public function show($id)
     {
-        $auth = Auth::user()->hasPerfil('super', 'admin');
+        $auth = Acl::hasRole(['super', 'admin']);
 
         if((!$auth)){
             return view('home');
@@ -80,7 +80,7 @@ class PerfilController extends Controller
 
     public function edit($id)
     {
-        $auth = Auth::user()->hasPerfil('super', 'admin');
+        $auth = Acl::hasRole(['super', 'admin']);
 
         if((!$auth)){
             return view('home');
@@ -93,7 +93,7 @@ class PerfilController extends Controller
 
     public function update(Request $request, $id)
     {
-        $auth = Auth::user()->hasPerfil('super', 'admin');
+        $auth = Acl::hasRole(['super', 'admin']);
 
         if((!$auth)){
             return view('home');
@@ -101,8 +101,8 @@ class PerfilController extends Controller
 
             $requestData = $request->all();
 
-            $perfil = Perfil::findOrFail($id);
-            $perfil->update($requestData);
+            $role = Perfil::findOrFail($id);
+            $role->update($requestData);
 
             return redirect('admin/perfis')->with('flash_message', 'Perfil atualizado!');
         }
@@ -110,7 +110,7 @@ class PerfilController extends Controller
 
     public function destroy($id)
     {
-        $auth = Auth::user()->hasPerfil('super', 'admin');
+        $auth = Acl::hasRole(['super', 'admin']);
 
         if((!$auth)){
             return view('home');
