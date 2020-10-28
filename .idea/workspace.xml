@@ -11,37 +11,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70d53ae1-9859-48cc-ba68-784e8bf619ee" name="Default Changelist" comment="init">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ModuloController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/ModulosTableSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/TelasTableSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/modulos/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/modulos/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/modulos/form.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/modulos/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/modulos/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Facades/AclFacade.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Facades/AclFacade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UsuarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UsuarioController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Model/Acl/Modulo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Acl/Modulo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Model/Acl/Perfil.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Acl/Perfil.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Model/Acl/Permissao.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Acl/Permissao.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Model/Acl/Tela.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Acl/Tela.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Model/Acl/Usuario.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Acl/Usuario.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_01_054503_acl_setup_tables.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_05_01_054503_acl_setup_tables.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_23_195121_create_clientes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_23_195121_create_clientes_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/ClientesTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/ClientesTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/PerfisTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/PerfisTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/PermissoesTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/PermissoesTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/perfis/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/perfis/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/perfis/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/perfis/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/permissoes/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/permissoes/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/permissoes/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/permissoes/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/usuarios/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/usuarios/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/includes/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/includes/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/debugbar/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/storage/debugbar/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,7 +207,7 @@
       <workItem from="1603718109307" duration="3279000" />
       <workItem from="1603745994748" duration="8554000" />
       <workItem from="1603907155346" duration="3474000" />
-      <workItem from="1603913524116" duration="12562000" />
+      <workItem from="1603913524116" duration="12846000" />
     </task>
     <servers />
   </component>
