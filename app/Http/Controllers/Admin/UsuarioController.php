@@ -105,12 +105,12 @@ class UsuarioController extends Controller
             return view('home');
         }else{
             $usuario = Usuario::with(['perfis', 'permissoes'])->findOrFail($id);
-            $perfis_usuario = $usuario->perfis->pluck('id')->toArray();
-            $permissoes_usuario = $usuario->permissoes->pluck('id')->toArray();
+            $usuario_perfis = $usuario->perfis->pluck('id')->toArray();
+            $usuario_permissoes = $usuario->permissoes->pluck('id')->toArray();
             $perfis = Perfil::all('id', 'nome');
             $permissoes = Permissao::all('id', 'nome');
 
-            return view('admin.usuarios.edit', compact('usuario', 'perfis', 'permissoes', 'perfis_usuario', 'permissoes_usuario'));
+            return view('admin.usuarios.edit', compact('usuario', 'perfis', 'permissoes', 'usuario_perfis', 'usuario_permissoes'));
         }
     }
 

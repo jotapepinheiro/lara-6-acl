@@ -6,6 +6,11 @@ use App\Repositories\Contracts\AclPerfilInterface;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\AclPerfilTrait;
 
+/**
+ * Class Perfil
+ *
+ * @package App\Model\Acl
+ */
 class Perfil extends Model implements AclPerfilInterface
 {
     use AclPerfilTrait;

@@ -6,6 +6,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Traits\AclPermissaoUsuarioTrait;
 
+/**
+ * Class Usuario
+ *
+ * @package App\Model\Acl
+ */
 class Usuario extends Authenticatable
 {
     use Notifiable;

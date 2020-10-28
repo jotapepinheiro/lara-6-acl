@@ -4,6 +4,11 @@ namespace App\Model\Acl;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Tela
+ *
+ * @package App\Model\Acl
+ */
 class Tela extends Model
 {
     protected $table = 'telas';
@@ -15,6 +20,6 @@ class Tela extends Model
     ];
 
     public function permissoes() {
-        return $this->belongsToMany(Permissao::class, 'perfil_tela_permissao');
+        return $this->belongsToMany(Permissao::class, 'tela_permissao', 'tela_id', 'permissao_id');
     }
 }

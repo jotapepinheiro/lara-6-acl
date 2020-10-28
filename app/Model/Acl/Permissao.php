@@ -6,6 +6,11 @@ use App\Repositories\Contracts\AclPermissaoInterface;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\AclPermissaoTrait;
 
+/**
+ * Class Permissao
+ *
+ * @package App\Model\Acl
+ */
 class Permissao extends Model implements AclPermissaoInterface
 {
     use AclPermissaoTrait;

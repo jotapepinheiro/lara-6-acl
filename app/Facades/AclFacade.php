@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Facade;
 /**
  * Class AclFacade
  *
- * @method static bool hasRole(string $role, bool $requireAll)
- * @method static bool can(string $permission, bool $requireAll)
+ * @method static bool hasRole(array|string $role, bool $requireAll = false)
+ * @method static bool can(string $permission, bool $requireAll = false)
  * @method static bool ability(array|string $roles, array|string $permissions, array $options = [])
  *
  * @package App\Facades

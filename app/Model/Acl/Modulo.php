@@ -4,6 +4,11 @@ namespace App\Model\Acl;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Modulo
+ *
+ * @package App\Model\Acl
+ */
 class Modulo extends Model
 {
     protected $table = 'modulos';
@@ -11,6 +16,11 @@ class Modulo extends Model
     protected $hidden = array('pivot');
 
     protected $fillable = [
-        'name', 'display_name', 'description'
+        'nome', 'slug', 'descricao'
     ];
+
+    public function telas() {
+        return $this->belongsToMany(Tela::class, 'modulo_tela', 'modulo_id', 'tela_id');
+    }
+
 }

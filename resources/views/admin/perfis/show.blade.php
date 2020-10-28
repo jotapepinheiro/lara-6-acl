@@ -31,13 +31,25 @@
                         <div class="table-responsive">
                             <table class="table">
                                 <tbody>
-                                    <tr>
-                                        <th>ID</th><td>{{ $perfil->id }}</td>
-                                    </tr>
-                                    <tr><th> Nome </th><td> {{ $perfil->nome }} </td></tr><tr><th> Slug </th><td> {{ $perfil->slug }} </td></tr>
+                                <tr>
+                                    <th>ID</th>
+                                    <td>{{ $perfil->id }}</td>
+                                </tr>
+                                <tr>
+                                    <th> Nome </th>
+                                    <td> {{ $perfil->nome }} </td>
+                                </tr>
+                                <tr>
+                                    <th> Slug </th>
+                                    <td> {{ $perfil->slug }} </td>
+                                </tr>
+                                <tr>
+                                    <th> Descrição </th>
+                                    <td> {{ $perfil->descricao }} </td>
+                                </tr>
                                 </tbody>
                             </table>
-
+                        </div>
 
                             <div class="panel panel-default">
                                 <div class="panel-heading">
@@ -73,8 +85,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                        </div>
 
                     </div>
                 </div>

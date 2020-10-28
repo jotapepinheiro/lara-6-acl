@@ -31,10 +31,22 @@
                         <div class="table-responsive">
                             <table class="table">
                                 <tbody>
-                                    <tr>
-                                        <th>ID</th><td>{{ $permissao->id }}</td>
-                                    </tr>
-                                    <tr><th> Nome </th><td> {{ $permissao->nome }} </td></tr><tr><th> Slug </th><td> {{ $permissao->slug }} </td></tr>
+                                <tr>
+                                    <th>ID</th>
+                                    <td>{{ $permissao->id }}</td>
+                                </tr>
+                                <tr>
+                                    <th> Nome </th>
+                                    <td> {{ $permissao->nome }} </td>
+                                </tr>
+                                <tr>
+                                    <th> Slug </th>
+                                    <td> {{ $permissao->slug }} </td>
+                                </tr>
+                                <tr>
+                                    <th> Descrição </th>
+                                    <td> {{ $permissao->descricao }} </td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>

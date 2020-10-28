@@ -11,23 +11,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70d53ae1-9859-48cc-ba68-784e8bf619ee" name="Default Changelist" comment="init">
-      <change afterPath="$PROJECT_DIR$/config/debugbar.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/debugbar/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/lara-6-acl.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/lara-6-acl.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ModuloController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeds/ModulosTableSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeds/TelasTableSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/modulos/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/modulos/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/modulos/form.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/modulos/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/modulos/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PerfilController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PerfilController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Facades/AclFacade.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Facades/AclFacade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UsuarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UsuarioController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Traits/AclUsuarioTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/AclUsuarioTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Model/Acl/Modulo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Acl/Modulo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Model/Acl/Perfil.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Acl/Perfil.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Model/Acl/Permissao.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Acl/Permissao.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Model/Acl/Tela.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Acl/Tela.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Model/Acl/Usuario.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Acl/Usuario.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_01_054503_acl_setup_tables.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_05_01_054503_acl_setup_tables.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_23_195121_create_clientes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_23_195121_create_clientes_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/ClientesTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/ClientesTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeds/PerfisTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/PerfisTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/UsuariosTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UsuariosTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/perfis/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/perfis/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/PermissoesTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/PermissoesTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/perfis/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/perfis/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/perfis/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/perfis/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/permissoes/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/permissoes/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/permissoes/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/permissoes/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/usuarios/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/usuarios/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/usuarios/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/usuarios/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/includes/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/includes/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/debugbar/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/storage/debugbar/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +181,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Facades" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -179,16 +193,16 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/Facades" />
-      <recent name="$PROJECT_DIR$/app/Services" />
-      <recent name="$PROJECT_DIR$/app/Providers" />
-      <recent name="$PROJECT_DIR$/app/Http/Middleware" />
-      <recent name="$PROJECT_DIR$/app/Traits" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/Model" />
       <recent name="$PROJECT_DIR$/app/Model/Acl" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/admin" />
+      <recent name="$PROJECT_DIR$/app/Http/Controllers/Admin" />
+      <recent name="$PROJECT_DIR$/database/seeds" />
+      <recent name="$PROJECT_DIR$/app/Facades" />
+      <recent name="$PROJECT_DIR$/app/Services" />
     </key>
   </component>
   <component name="RunManager" selected="PHP Remote Debug.Xdebug">
@@ -221,7 +235,7 @@
       <workItem from="1603718109307" duration="3279000" />
       <workItem from="1603745994748" duration="8554000" />
       <workItem from="1603907155346" duration="3474000" />
-      <workItem from="1603913524116" duration="605000" />
+      <workItem from="1603913524116" duration="12562000" />
     </task>
     <servers />
   </component>
@@ -263,11 +277,11 @@
     </state>
     <state x="472" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1680.981@0.23.1680.981" timestamp="1603586211607" />
     <state x="719" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.2560.1011/2560.23.1680.1027@0.23.2560.1011" timestamp="1603826168551" />
-    <state x="1298" y="529" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1603893895508">
+    <state x="1298" y="529" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1603927445486">
       <screen x="0" y="23" width="2560" height="1011" />
     </state>
     <state x="578" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1680.981@0.23.1680.981" timestamp="1603617552090" />
-    <state x="1298" y="529" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.2560.1011/2560.23.1680.1027@0.23.2560.1011" timestamp="1603893895508" />
+    <state x="1298" y="529" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.2560.1011/2560.23.1680.1027@0.23.2560.1011" timestamp="1603927445486" />
     <state x="891" y="26" key="CommitChangelistDialog2" timestamp="1603483113455">
       <screen x="0" y="23" width="2560" height="1011" />
     </state>
@@ -337,15 +351,19 @@
     </state>
     <state width="1638" height="154" key="GridCell.Tab.2.right/0.23.1680.981@0.23.1680.981" timestamp="1603618499120" />
     <state width="2204" height="317" key="GridCell.Tab.2.right/0.23.2560.1011/2560.23.1680.1027@0.23.2560.1011" timestamp="1603912021311" />
+    <state x="826" y="245" key="NewPhpClassDialog" timestamp="1603916270648">
+      <screen x="0" y="23" width="2560" height="1011" />
+    </state>
+    <state x="826" y="245" key="NewPhpClassDialog/0.23.2560.1011/2560.23.1680.1027@0.23.2560.1011" timestamp="1603916270648" />
     <state x="448" y="167" key="SettingsEditor" timestamp="1603463283521">
       <screen x="0" y="23" width="2560" height="1011" />
     </state>
     <state x="448" y="167" key="SettingsEditor/0.23.2560.1011/2560.23.1680.1027@0.23.2560.1011" timestamp="1603463283521" />
-    <state x="646" y="267" width="1087" height="580" key="find.popup" timestamp="1603820425630">
+    <state x="646" y="267" width="1087" height="580" key="find.popup" timestamp="1603924160352">
       <screen x="0" y="23" width="2560" height="1011" />
     </state>
     <state x="424" y="260" width="714" height="580" key="find.popup/0.23.1680.981@0.23.1680.981" timestamp="1603610386237" />
-    <state x="646" y="267" width="1087" height="580" key="find.popup/0.23.2560.1011/2560.23.1680.1027@0.23.2560.1011" timestamp="1603820425630" />
+    <state x="646" y="267" width="1087" height="580" key="find.popup/0.23.2560.1011/2560.23.1680.1027@0.23.2560.1011" timestamp="1603924160352" />
     <state x="503" y="237" width="672" height="678" key="search.everywhere.popup" timestamp="1603573032341">
       <screen x="0" y="23" width="1680" height="981" />
     </state>

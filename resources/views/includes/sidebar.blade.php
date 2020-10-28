@@ -30,6 +30,14 @@
             <hr>
             <ul class="nav" role="tablist">
                 <li role="presentation">
+                    <a href="{{ url('/admin/modulos') }}">
+                        - Módulos
+                    </a>
+                </li>
+            </ul>
+            <hr>
+            <ul class="nav" role="tablist">
+                <li role="presentation">
                     <a href="{{ url('/admin/clientes') }}">
                         - Clientes
                     </a>
@@ -55,6 +63,14 @@
                 <li role="presentation">
                     <a href="{{ url('/admin/permissoes') }}">
                         - Permissões
+                    </a>
+                </li>
+            </ul>
+            <hr>
+            <ul class="nav" role="tablist">
+                <li role="presentation">
+                    <a href="{{ url('/admin/modulos') }}">
+                        - Módulos
                     </a>
                 </li>
             </ul>

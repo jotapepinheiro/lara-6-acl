@@ -15,28 +15,28 @@ class PerfisTableSeeder extends Seeder
     {
         DB::table('perfis')->delete();
 
-        Perfil::create(array(
+        Perfil::create([
             'nome' => 'Super Administrador',
             'slug' => 'super',
             'descricao' => 'Super Administrador do Sistema'
-        ));
+        ]);
 
-        Perfil::create(array(
+        Perfil::create([
             'nome' => 'Administrador',
             'slug' => 'admin',
             'descricao' => 'Administrador do Sistema'
-        ))->permissoes()->sync([1,2,3,5,6,7,9,10,11,13,14,15]);
+        ])->permissoes()->sync([1,2,3,5,6,7,9,10,11,13,14,15,17,18,19,21,22,23]);
 
-        Perfil::create(array(
+        Perfil::create([
             'nome' => 'Técnico',
             'slug' => 'tecnico',
             'descricao' => 'Usuário Técnico'
-        ))->permissoes()->sync([13,14]);
+        ])->permissoes()->sync([13,14]);
 
-        Perfil::create(array(
+        Perfil::create([
             'nome' => 'Usuário',
             'slug' => 'user',
             'descricao' => 'Usuário Comum'
-        ))->permissoes()->sync([13]);
+        ])->permissoes()->sync([13]);
     }
 }

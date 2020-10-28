@@ -28,10 +28,20 @@ class PermissoesTableSeeder extends Seeder
             /* 11 */ ['slug' => 'permissao-edit','nome' => 'Editar Permissões','descricao' => 'Editar Permissões'],
             /* 12 */ ['slug' => 'permissao-delete','nome' => 'Deletar Permissões','descricao' => 'Deletar Permissões'],
 
-            /* 13 */ ['slug' => 'cliente-list','nome' => 'Listar Clientes','descricao' => 'Visualizar Clientes'],
-            /* 14 */ ['slug' => 'cliente-create','nome' => 'Criar Clientes','descricao' => 'Criar Novos Clientes'],
-            /* 15 */ ['slug' => 'cliente-edit','nome' => 'Editar Clientes','descricao' => 'Editar Clientes'],
-            /* 16 */ ['slug' => 'cliente-delete','nome' => 'Deletar Clientes','descricao' => 'Deletar Clientes'],
+            /* 13 */ ['slug' => 'modulo-list','nome' => 'Listar Módulos','descricao' => 'Visualizar Módulos'],
+            /* 14 */ ['slug' => 'modulo-create','nome' => 'Criar Módulos','descricao' => 'Criar Novos Módulos'],
+            /* 15 */ ['slug' => 'modulo-edit','nome' => 'Editar Módulos','descricao' => 'Editar Módulos'],
+            /* 16 */ ['slug' => 'modulo-delete','nome' => 'Deletar Módulos','descricao' => 'Deletar Módulos'],
+
+            /* 17 */ ['slug' => 'tela-list','nome' => 'Listar Telas','descricao' => 'Visualizar Telas'],
+            /* 18 */ ['slug' => 'tela-create','nome' => 'Criar Telas','descricao' => 'Criar Novos Telas'],
+            /* 19 */ ['slug' => 'tela-edit','nome' => 'Editar Telas','descricao' => 'Editar Telas'],
+            /* 20 */ ['slug' => 'tela-delete','nome' => 'Deletar Telas','descricao' => 'Deletar Telas'],
+
+            /* 21 */ ['slug' => 'cliente-list','nome' => 'Listar Clientes','descricao' => 'Visualizar Clientes'],
+            /* 22 */ ['slug' => 'cliente-create','nome' => 'Criar Clientes','descricao' => 'Criar Novos Clientes'],
+            /* 23 */ ['slug' => 'cliente-edit','nome' => 'Editar Clientes','descricao' => 'Editar Clientes'],
+            /* 24 */ ['slug' => 'cliente-delete','nome' => 'Deletar Clientes','descricao' => 'Deletar Clientes'],
        ];
 
        foreach ($permissions as $key=>$value){

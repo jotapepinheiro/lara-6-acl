@@ -12,6 +12,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
         Route::resource('usuarios', 'Admin\UsuarioController');
         Route::resource('perfis', 'Admin\PerfilController');
         Route::resource('permissoes', 'Admin\PermissaoController');
+        Route::resource('modulos', 'Admin\ModuloController');
     });
 
     Route::resource('clientes', 'Admin\ClienteController');
