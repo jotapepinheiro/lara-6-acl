@@ -25,7 +25,7 @@ class PerfisTableSeeder extends Seeder
             'nome' => 'Administrador',
             'slug' => 'admin',
             'descricao' => 'Administrador do Sistema'
-        ))->permissoes()->sync([1,5,9,13,14,15,16]);
+        ))->permissoes()->sync([1,2,3,5,6,7,9,10,11,13,14,15]);
 
         Perfil::create(array(
             'nome' => 'Técnico',

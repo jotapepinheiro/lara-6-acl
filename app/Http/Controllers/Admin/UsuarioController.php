@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Facades\AclFacade as Acl;
 use App\Http\Controllers\Controller;
+use App\Model\Acl\Perfil;
+use App\Model\Acl\Permissao;
 use App\Model\Acl\Usuario;
 use Illuminate\Http\Request;
 
@@ -46,7 +48,10 @@ class UsuarioController extends Controller
         if((!$auth)){
             return view('home');
         }else{
-            return view('admin.usuarios.create');
+            $perfis = Perfil::all('id', 'nome');
+            $permissoes = Permissao::all('id', 'nome');
+
+            return view('admin.usuarios.create', compact('perfis', 'permissoes'));
         }
     }
 
@@ -58,9 +63,22 @@ class UsuarioController extends Controller
             return view('home');
         }else{
 
-            $requestData = $request->all();
+            $inputUser = $request->only('name', 'email', 'password');
+            $inputUser['password'] = app('hash')->make($inputUser['password']);
 
-            Usuario::create($requestData);
+            $usuario = Usuario::create($inputUser);
+
+            if ($request->has('perfis')) {
+                foreach ($request->input('perfis') as $key => $value) {
+                    $usuario->attachRole($value);
+                }
+            }
+
+            if ($request->has('permissoes')) {
+                foreach ($request->input('permissoes') as $key => $value) {
+                    $usuario->attachPermission($value);
+                }
+            }
 
             return redirect('admin/usuarios')->with('flash_message', 'Usuário adicionado!');
         }
@@ -73,7 +91,7 @@ class UsuarioController extends Controller
         if((!$auth)){
             return view('home');
         }else{
-            $usuario = Usuario::findOrFail($id);
+            $usuario = Usuario::with(['perfis.permissoes', 'permissoes'])->findOrFail($id);
 
             return view('admin.usuarios.show', compact('usuario'));
         }
@@ -86,9 +104,13 @@ class UsuarioController extends Controller
         if((!$auth)){
             return view('home');
         }else{
-            $usuario = Usuario::findOrFail($id);
+            $usuario = Usuario::with(['perfis', 'permissoes'])->findOrFail($id);
+            $perfis_usuario = $usuario->perfis->pluck('id')->toArray();
+            $permissoes_usuario = $usuario->permissoes->pluck('id')->toArray();
+            $perfis = Perfil::all('id', 'nome');
+            $permissoes = Permissao::all('id', 'nome');
 
-            return view('admin.usuarios.edit', compact('usuario'));
+            return view('admin.usuarios.edit', compact('usuario', 'perfis', 'permissoes', 'perfis_usuario', 'permissoes_usuario'));
         }
     }
 
@@ -100,10 +122,25 @@ class UsuarioController extends Controller
             return view('home');
         }else{
 
-            $requestData = $request->all();
+            $inputUser = $request->only('name', 'email', 'password');
+            $inputUser['password'] = app('hash')->make($inputUser['password']);
 
             $usuario = Usuario::findOrFail($id);
-            $usuario->update($requestData);
+            $usuario->update($inputUser);
+
+            $usuario->perfis()->sync([]);
+            if ($request->has('perfis')) {
+                foreach ($request->input('perfis') as $key => $value) {
+                    $usuario->attachRole($value);
+                }
+            }
+
+            $usuario->permissoes()->sync([]);
+            if ($request->has('permissoes')) {
+                foreach ($request->input('permissoes') as $key => $value) {
+                    $usuario->attachPermission($value);
+                }
+            }
 
             return redirect('admin/usuarios')->with('flash_message', 'Usuário atualizado!');
         }

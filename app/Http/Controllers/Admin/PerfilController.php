@@ -57,9 +57,15 @@ class PerfilController extends Controller
             return view('home');
         }else{
 
-            $requestData = $request->all();
+            $perfil = Perfil::create([
+                'nome' => $request->input('nome'),
+                'slug' => $request->input('slug'),
+                'descricao' => $request->input('descricao')
+            ]);
 
-            Perfil::create($requestData);
+            foreach ($request->input('permissoes') as $key => $value) {
+                $perfil->attachPermission($value);
+            }
 
             return redirect('admin/perfis')->with('flash_message', 'Perfil adicionado!');
         }
@@ -72,7 +78,7 @@ class PerfilController extends Controller
         if((!$auth)){
             return view('home');
         }else{
-            $perfil = Perfil::findOrFail($id);
+            $perfil = Perfil::with('permissoes')->findOrFail($id);
 
             return view('admin.perfis.show', compact('perfil'));
         }

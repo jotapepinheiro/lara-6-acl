@@ -33,8 +33,8 @@ class UsuariosTableSeeder extends Seeder
             'email_verified_at' => Carbon::now()->add(2, 'hour'),
             'created_at'  => Carbon::now()
         ]);
-        $admin->perfis()->sync([2]);
-        $admin->permissoes()->sync([6,10]);
+        $admin->perfis()->sync([2,4]);
+        $admin->permissoes()->sync([4,12]);
 
         // CADATRAR TECNICO
         $tecnico = Usuario::create([

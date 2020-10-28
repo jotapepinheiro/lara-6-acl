@@ -37,6 +37,43 @@
                                     <tr><th> Nome </th><td> {{ $perfil->nome }} </td></tr><tr><th> Slug </th><td> {{ $perfil->slug }} </td></tr>
                                 </tbody>
                             </table>
+
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h6 class="panel-title">Permissões do Perfil</h6>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <tbody>
+                                                @if(count($perfil->permissoes) > 0)
+                                                    @foreach($perfil->permissoes as $perm)
+                                                        <tr>
+                                                            <td>
+                                                                <a href="{{ url('admin/permissoes', $perm->id) }}" class="label label-info">{{ $perm->nome }}</a>
+                                                            </td>
+                                                            <td>
+                                                                {{ $perm->slug }}
+                                                            </td>
+                                                            <td>
+                                                                {{ $perm->descricao }}
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                @else
+                                                    <tr>
+                                                        <td class="text-danger text-center">
+                                                            <p><strong>Nenhuma permissão vinculada</strong></p>
+                                                        </td>
+                                                    </tr>
+                                                @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
                     </div>

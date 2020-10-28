@@ -100,6 +100,7 @@ trait AclUsuarioTrait
         static::deleting(function($user) {
             if (!method_exists(Usuario::class, 'bootSoftDeletes')) {
                 $user->perfis()->sync([]);
+                $user->permissoes()->sync([]);
             }
 
             return true;

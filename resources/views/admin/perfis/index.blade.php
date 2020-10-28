@@ -42,7 +42,8 @@
                                 @foreach($perfis as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ $item->nome }}</td><td>{{ $item->slug }}</td>
+                                        <td>{{ $item->nome }}</td>
+                                        <td>{{ $item->slug }}</td>
                                         <td>
                                             <a href="{{ url('/admin/perfis/' . $item->id) }}" title=" Ver Perfil"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i>  Ver</button></a>
 

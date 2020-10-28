@@ -33,9 +33,116 @@
                                     <tr>
                                         <th>ID</th><td>{{ $usuario->id }}</td>
                                     </tr>
-                                    <tr><th> Name </th><td> {{ $usuario->name }} </td></tr><tr><th> Email </th><td> {{ $usuario->email }} </td></tr><tr><th> Password </th><td> {{ $usuario->password }} </td></tr>
+                                    <tr><th>Name </th><td> {{ $usuario->name }} </td></tr><tr><th> Email </th><td> {{ $usuario->email }} </td></tr><tr><th> Password </th><td> {{ $usuario->password }} </td></tr>
                                 </tbody>
                             </table>
+                        </div>
+
+                        <hr />
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h6 class="panel-title">Perfis</h6>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <tbody>
+                                                @if(count($usuario->perfis) > 0)
+                                                    @foreach ($usuario->perfis as $perfil)
+                                                        <tr>
+                                                            <td>
+                                                                <a href="{{ url('admin/perfis', $perfil->id) }}" class="label label-info">{{ $perfil->nome }}</a>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                @else
+                                                    <tr>
+                                                        <td class="text-danger text-center">
+                                                            <p><strong>Nenhum perfil vinculado</strong></p>
+                                                        </td>
+                                                    </tr>
+                                                @endif
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h6 class="panel-title">Permissões do Perfil</h6>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <tbody>
+                                                @if(count($usuario->perfis) > 0)
+                                                    @foreach ($usuario->perfis as $perfil)
+                                                        @if(count($perfil->permissoes) > 0)
+                                                            @foreach($perfil->permissoes as $perm)
+                                                                <tr>
+                                                                    <td>
+                                                                        <a href="{{ url('admin/permissoes', $perm->id) }}" class="label label-info">{{ $perm->nome }}</a>
+                                                                    </td>
+                                                                </tr>
+                                                            @endforeach
+                                                            @else
+                                                                <tr>
+                                                                    <td class="text-danger text-center">
+                                                                        <p><strong>Nenhuma permissão vinculada</strong></p>
+                                                                    </td>
+                                                                </tr>
+                                                        @endif
+                                                    @endforeach
+                                                @else
+                                                    <tr>
+                                                        <td class="text-danger text-center">
+                                                            <p><strong>Nenhum perfil vinculado</strong></p>
+                                                        </td>
+                                                    </tr>
+                                                @endif
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h6 class="panel-title">Permissões do Usuário</h6>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <tbody>
+                                                @if(count($usuario->permissoes) > 0)
+                                                    @foreach ($usuario->permissoes as $perm)
+                                                        <tr>
+                                                            <td>
+                                                                <a href="{{ url('admin/permissoes', $perm->id) }}" class="label label-info">{{ $perm->nome }}</a>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                @else
+                                                    <tr>
+                                                        <td class="text-danger text-center">
+                                                            <p><strong>Nenhuma permissão vinculada</strong></p>
+                                                        </td>
+                                                    </tr>
+                                                @endif
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                     </div>

@@ -14,6 +14,21 @@
     {!! $errors->first('password', '<p class="help-block">:message</p>') !!}
 </div>
 
+<select name="perfis[]" multiple>
+    @foreach($perfis as $perfil)
+        <option value="{{$perfil->id}}" @if($formMode == 'edit' && in_array($perfil->id, $perfis_usuario))selected="selected"@endif>
+            {{$perfil->nome}}
+        </option>
+    @endforeach
+</select>
+
+<select name="permissoes[]" multiple>
+    @foreach($permissoes as $perm)
+        <option value="{{$perm->id}}" @if($formMode == 'edit' && in_array($perm->id, $permissoes_usuario))selected="selected"@endif>
+            {{$perm->nome}}
+        </option>
+    @endforeach
+</select>
 
 <div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">
