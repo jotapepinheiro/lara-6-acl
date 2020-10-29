@@ -6,6 +6,7 @@ use App\Facades\AclFacade as Acl;
 use App\Http\Controllers\Controller;
 
 use App\Model\Acl\Permissao;
+use App\Model\Acl\Tela;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,11 +28,11 @@ class PermissaoController extends Controller
             $perPage = 5;
 
             if (!empty($keyword)) {
-                $permissoes = Permissao::where('nome', 'LIKE', "%$keyword%")
+                $permissoes = Permissao::with('tela')->where('nome', 'LIKE', "%$keyword%")
                 ->orWhere('slug', 'LIKE', "%$keyword%")
                 ->orderBy('id')->latest()->paginate($perPage);
             } else {
-                $permissoes = Permissao::orderBy('id')->latest()->paginate($perPage);
+                $permissoes = Permissao::with('tela')->orderBy('id')->latest()->paginate($perPage);
             }
 
             return view('admin.permissoes.index', compact('permissoes'));
@@ -45,7 +46,9 @@ class PermissaoController extends Controller
         if((!$auth)){
             return view('home');
         }else{
-            return view('admin.permissoes.create');
+            $telas = Tela::all('id', 'nome', 'descricao');
+
+            return view('admin.permissoes.create', compact('telas'));
         }
     }
 
@@ -72,7 +75,7 @@ class PermissaoController extends Controller
         if((!$auth)){
             return view('home');
         }else{
-            $permissao = Permissao::findOrFail($id);
+            $permissao = Permissao::with('tela')->findOrFail($id);
 
             return view('admin.permissoes.show', compact('permissao'));
         }
@@ -85,9 +88,10 @@ class PermissaoController extends Controller
         if((!$auth)){
             return view('home');
         }else{
-            $permissao = Permissao::findOrFail($id);
+            $permissao = Permissao::with('tela')->findOrFail($id);
+            $telas = Tela::all('id', 'nome', 'descricao');
 
-            return view('admin.permissoes.edit', compact('permissao'));
+            return view('admin.permissoes.edit', compact('permissao', 'telas'));
         }
     }
 

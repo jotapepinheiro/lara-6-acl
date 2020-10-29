@@ -35,14 +35,16 @@
                             <table class="table table-sm">
                                 <thead>
                                     <tr>
-                                        <th>ID</th><th>Nome</th><th>Slug</th><th>Ações</th>
+                                        <th>ID</th><th>Nome</th><th>Slug</th><th>Tela</th><th>Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($permissoes as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ $item->nome }}</td><td>{{ $item->slug }}</td>
+                                        <td>{{ $item->nome }}</td>
+                                        <td>{{ $item->slug }}</td>
+                                        <td>{{ $item->tela->nome }}</td>
                                         <td>
                                             <a href="{{ url('/admin/permissoes/' . $item->id) }}" title="Ver Permissão"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i>  Ver</button></a>
 

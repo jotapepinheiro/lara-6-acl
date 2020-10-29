@@ -16,6 +16,17 @@
     {!! $errors->first('descricao', '<p class="help-block">:message</p>') !!}
 </div>
 
+<div class="form-group">
+    <label for="tela_id">Telas</label>
+    <select class="form-control" name="tela_id" id="tela_id">
+        @foreach($telas as $tela)
+            <option value="{{$tela->id}}" @if($formMode == 'edit' && $tela->id == $permissao->tela->id)selected="selected"@endif>
+                {{$tela->nome}} -> {{$tela->descricao}}
+            </option>
+        @endforeach
+    </select>
+</div>
+
 
 <div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">

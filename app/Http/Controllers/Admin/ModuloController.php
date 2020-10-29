@@ -47,10 +47,7 @@ class ModuloController extends Controller
         if((!$auth)){
             return view('home');
         }else{
-            $telas = Tela::all('id', 'nome');
-            $permissoes = Permissao::all('id', 'nome');
-
-            return view('admin.modulos.create', compact('telas', 'permissoes'));
+            return view('admin.modulos.create');
         }
     }
 
@@ -62,15 +59,11 @@ class ModuloController extends Controller
             return view('home');
         }else{
 
-            $modulo = Modulo::create([
+            Modulo::create([
                 'nome' => $request->input('nome'),
                 'slug' => $request->input('slug'),
                 'descricao' => $request->input('descricao')
             ]);
-
-//            foreach ($request->input('permissoes') as $key => $value) {
-//                $modulo->attachPermission($value);
-//            }
 
             return redirect('admin/modulos')->with('flash_message', 'Módulo adicionado!');
         }
@@ -97,12 +90,8 @@ class ModuloController extends Controller
             return view('home');
         }else{
             $modulo = Modulo::with(['telas.permissoes'])->findOrFail($id);
-            $modulo_telas = $modulo->telas->pluck('id')->toArray();
 
-            $telas = Tela::all('id', 'nome');
-            $permissoes = Permissao::all('id', 'nome');
-
-            return view('admin.modulos.edit', compact('modulo', 'telas', 'permissoes', 'modulo_telas'));
+            return view('admin.modulos.edit', compact('modulo'));
         }
     }
 

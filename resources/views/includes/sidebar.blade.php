@@ -8,13 +8,6 @@
             @role('super')
             <ul class="nav" role="tablist">
                 <li role="presentation">
-                    <a href="{{ url('/admin/usuarios') }}">
-                        - Usuários
-                    </a>
-                </li>
-            </ul>
-            <ul class="nav" role="tablist">
-                <li role="presentation">
                     <a href="{{ url('/admin/perfis') }}">
                         - Perfis
                     </a>
@@ -22,8 +15,8 @@
             </ul>
             <ul class="nav" role="tablist">
                 <li role="presentation">
-                    <a href="{{ url('/admin/permissoes') }}">
-                        - Permissões
+                    <a href="{{ url('/admin/usuarios') }}">
+                        - Usuários
                     </a>
                 </li>
             </ul>
@@ -32,6 +25,20 @@
                 <li role="presentation">
                     <a href="{{ url('/admin/modulos') }}">
                         - Módulos
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav" role="tablist">
+                <li role="presentation">
+                    <a href="{{ url('/admin/telas') }}">
+                        - Telas
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav" role="tablist">
+                <li role="presentation">
+                    <a href="{{ url('/admin/permissoes') }}">
+                        - Permissões
                     </a>
                 </li>
             </ul>
@@ -47,13 +54,6 @@
             @role('admin')
             <ul class="nav" role="tablist">
                 <li role="presentation">
-                    <a href="{{ url('/admin/usuarios') }}">
-                        - Usuários
-                    </a>
-                </li>
-            </ul>
-            <ul class="nav" role="tablist">
-                <li role="presentation">
                     <a href="{{ url('/admin/perfis') }}">
                         - Perfis
                     </a>
@@ -61,8 +61,8 @@
             </ul>
             <ul class="nav" role="tablist">
                 <li role="presentation">
-                    <a href="{{ url('/admin/permissoes') }}">
-                        - Permissões
+                    <a href="{{ url('/admin/usuarios') }}">
+                        - Usuários
                     </a>
                 </li>
             </ul>
@@ -71,6 +71,20 @@
                 <li role="presentation">
                     <a href="{{ url('/admin/modulos') }}">
                         - Módulos
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav" role="tablist">
+                <li role="presentation">
+                    <a href="{{ url('/admin/telas') }}">
+                        - Telas
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav" role="tablist">
+                <li role="presentation">
+                    <a href="{{ url('/admin/permissoes') }}">
+                        - Permissões
                     </a>
                 </li>
             </ul>

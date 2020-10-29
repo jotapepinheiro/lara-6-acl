@@ -20,6 +20,10 @@ class Permissao extends Model implements AclPermissaoInterface
     protected $hidden = array('pivot');
 
     protected $fillable = [
-        'nome', 'slug', 'descricao'
+        'tela_id', 'nome', 'slug', 'descricao'
     ];
+
+    public function tela() {
+        return $this->belongsTo(Tela::class, 'tela_id', 'id');
+    }
 }

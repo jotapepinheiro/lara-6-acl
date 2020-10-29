@@ -5,11 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Facades\AclFacade as Acl;
 use App\Http\Controllers\Controller;
 
-use App\Model\Acl\Perfil;
 use App\Model\Acl\Permissao;
+use App\Model\Acl\Tela;
 use Illuminate\Http\Request;
 
-class PerfilController extends Controller
+class TelaController extends Controller
 {
     public function __construct()
     {
@@ -27,15 +27,15 @@ class PerfilController extends Controller
             $perPage = 25;
 
             if (!empty($keyword)) {
-                $perfis = Perfil::where('nome', 'LIKE', "%$keyword%")
+                $telas = Tela::where('nome', 'LIKE', "%$keyword%")
                 ->orWhere('slug', 'LIKE', "%$keyword%")
                 ->orderBy('id')
                 ->latest()->paginate($perPage);
             } else {
-                $perfis = Perfil::orderBy('id')->latest()->paginate($perPage);
+                $telas = Tela::orderBy('id')->latest()->paginate($perPage);
             }
 
-            return view('admin.perfis.index', compact('perfis'));
+            return view('admin.telas.index', compact('telas'));
         }
     }
 
@@ -46,10 +46,10 @@ class PerfilController extends Controller
         if((!$auth)){
             return view('home');
         }else{
-            $permissoes = Permissao::all('id', 'nome', 'descricao');
-            $perfil_permissoes = [];
+            $permissoes = Permissao::all('id', 'nome');
+            $tela_permissoes = [];
 
-            return view('admin.perfis.create',  compact('permissoes', 'perfil_permissoes'));
+            return view('admin.telas.create',  compact('permissoes', 'tela_permissoes'));
         }
     }
 
@@ -61,7 +61,7 @@ class PerfilController extends Controller
             return view('home');
         }else{
 
-            $perfil = Perfil::create([
+            $tela = Tela::create([
                 'nome' => $request->input('nome'),
                 'slug' => $request->input('slug'),
                 'descricao' => $request->input('descricao')
@@ -69,11 +69,11 @@ class PerfilController extends Controller
 
             if ($request->has('permissoes')) {
                 foreach ($request->input('permissoes') as $key => $value) {
-                    $perfil->attachPermission($value);
+                    $tela->attachPermission($value);
                 }
             }
 
-            return redirect('admin/perfis')->with('flash_message', 'Perfil adicionado!');
+            return redirect('admin/telas')->with('flash_message', 'Módulo adicionado!');
         }
     }
 
@@ -84,9 +84,9 @@ class PerfilController extends Controller
         if((!$auth)){
             return view('home');
         }else{
-            $perfil = Perfil::with('permissoes')->findOrFail($id);
+            $tela = Tela::with('permissoes')->findOrFail($id);
 
-            return view('admin.perfis.show', compact('perfil'));
+            return view('admin.telas.show', compact('tela'));
         }
     }
 
@@ -97,11 +97,11 @@ class PerfilController extends Controller
         if((!$auth)){
             return view('home');
         }else{
-            $perfil = Perfil::findOrFail($id);
-            $permissoes = Permissao::all('id', 'nome', 'descricao');
-            $perfil_permissoes = $perfil->permissoes->pluck('id')->toArray();
+            $tela = Tela::findOrFail($id);
+            $permissoes = Permissao::all('id', 'nome');
+            $tela_permissoes = $tela->permissoes->pluck('id')->toArray();
 
-            return view('admin.perfis.edit', compact('perfil', 'permissoes', 'perfil_permissoes'));
+            return view('admin.telas.edit', compact('tela', 'permissoes', 'tela_permissoes'));
         }
     }
 
@@ -112,19 +112,19 @@ class PerfilController extends Controller
         if((!$auth)){
             return view('home');
         }else{
-            $inputPerfil = $request->only('nome', 'slug', 'descricao');
+            $inputTela = $request->only('nome', 'slug', 'descricao');
 
-            $role = Perfil::findOrFail($id);
-            $role->update($inputPerfil);
+            $tela = Tela::findOrFail($id);
+            $tela->update($inputTela);
 
-            $role->permissoes()->sync([]);
+            $tela->permissoes()->sync([]);
             if ($request->has('permissoes')) {
                 foreach ($request->input('permissoes') as $key => $value) {
-                    $role->attachPermission($value);
+                    $tela->attachPermission($value);
                 }
             }
 
-            return redirect('admin/perfis')->with('flash_message', 'Perfil atualizado!');
+            return redirect('admin/telas')->with('flash_message', 'Tela atualizada!');
         }
     }
 
@@ -135,9 +135,9 @@ class PerfilController extends Controller
         if((!$auth)){
             return view('home');
         }else{
-            Perfil::destroy($id);
+            Tela::destroy($id);
 
-            return redirect('admin/perfis')->with('flash_message', 'Perfil deletado!');
+            return redirect('admin/telas')->with('flash_message', 'Tela deletada!');
         }
     }
 }

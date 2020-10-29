@@ -18,6 +18,14 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <script>
+        window.Laravel = {!! json_encode([
+        'csrfToken' => csrf_token(),
+        'perfis' => Acl::user()->perfis->pluck('slug')->toJson(),
+        'permissoes' => Acl::user()->permissoes->pluck('slug')->toJson()
+    ]) !!};
+    </script>
 </head>
 <body>
     <div id="app">

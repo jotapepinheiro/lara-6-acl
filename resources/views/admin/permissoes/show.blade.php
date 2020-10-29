@@ -32,20 +32,24 @@
                             <table class="table">
                                 <tbody>
                                 <tr>
+                                    <th>Tela</th>
+                                    <td>{{ $permissao->tela->nome }}</td>
+                                </tr>
+                                <tr>
                                     <th>ID</th>
                                     <td>{{ $permissao->id }}</td>
                                 </tr>
                                 <tr>
-                                    <th> Nome </th>
-                                    <td> {{ $permissao->nome }} </td>
+                                    <th>Nome</th>
+                                    <td>{{ $permissao->nome }}</td>
                                 </tr>
                                 <tr>
-                                    <th> Slug </th>
-                                    <td> {{ $permissao->slug }} </td>
+                                    <th>Slug</th>
+                                    <td>{{ $permissao->slug }}</td>
                                 </tr>
                                 <tr>
-                                    <th> Descrição </th>
-                                    <td> {{ $permissao->descricao }} </td>
+                                    <th>Descrição</th>
+                                    <td>{{ $permissao->descricao }}</td>
                                 </tr>
                                 </tbody>
                             </table>

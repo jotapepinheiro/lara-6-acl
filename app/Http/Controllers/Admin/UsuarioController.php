@@ -48,8 +48,8 @@ class UsuarioController extends Controller
         if((!$auth)){
             return view('home');
         }else{
-            $perfis = Perfil::all('id', 'nome');
-            $permissoes = Permissao::all('id', 'nome');
+            $perfis = Perfil::all('id', 'nome', 'descricao');
+            $permissoes = Permissao::all('id', 'nome', 'descricao');
 
             return view('admin.usuarios.create', compact('perfis', 'permissoes'));
         }
@@ -107,8 +107,8 @@ class UsuarioController extends Controller
             $usuario = Usuario::with(['perfis', 'permissoes'])->findOrFail($id);
             $usuario_perfis = $usuario->perfis->pluck('id')->toArray();
             $usuario_permissoes = $usuario->permissoes->pluck('id')->toArray();
-            $perfis = Perfil::all('id', 'nome');
-            $permissoes = Permissao::all('id', 'nome');
+            $perfis = Perfil::all('id', 'nome', 'descricao');
+            $permissoes = Permissao::all('id', 'nome', 'descricao');
 
             return view('admin.usuarios.edit', compact('usuario', 'perfis', 'permissoes', 'usuario_perfis', 'usuario_permissoes'));
         }

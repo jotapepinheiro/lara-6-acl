@@ -17,27 +17,5 @@
 </div>
 
 <div class="form-group">
-    <label for="telas">Telas</label>
-    <select multiple class="form-control" name="telas[]" id="telas">
-        @foreach($telas as $tela)
-            <option value="{{$tela->id}}" @if($formMode == 'edit' && in_array($tela->id, $modulo_telas))selected="selected"@endif>
-                {{$tela->nome}}
-            </option>
-        @endforeach
-    </select>
-</div>
-
-<div class="form-group">
-    <label for="permissoes">Permissões</label>
-    <select multiple class="form-control" name="permissoes[]" id="permissoes">
-        @foreach($permissoes as $perm)
-            <option value="{{$perm->id}}">
-                {{$perm->nome}}
-            </option>
-        @endforeach
-    </select>
-</div>
-
-<div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">
 </div>

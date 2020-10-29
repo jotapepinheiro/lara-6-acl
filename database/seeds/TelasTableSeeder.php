@@ -55,6 +55,34 @@ class TelasTableSeeder extends Seeder
 
         Tela::create([
             'modulo_id' => 3,
+            'nome' => 'Cadastro de Perfis',
+            'slug' => 'tela-cadastro-perfis',
+            'descricao' => 'Tela de Cadastro de Perfis'
+        ]);
+
+        Tela::create([
+            'modulo_id' => 3,
+            'nome' => 'Cadastro de Permissões',
+            'slug' => 'tela-cadastro-permissoes',
+            'descricao' => 'Tela de Cadastro de Permissões'
+        ]);
+
+        Tela::create([
+            'modulo_id' => 3,
+            'nome' => 'Cadastro de Módulos',
+            'slug' => 'tela-cadastro-modulos',
+            'descricao' => 'Tela de Cadastro de Módulos'
+        ]);
+
+        Tela::create([
+            'modulo_id' => 3,
+            'nome' => 'Cadastro de Telas',
+            'slug' => 'tela-cadastro-telas',
+            'descricao' => 'Tela de Cadastro de Telas'
+        ]);
+
+        Tela::create([
+            'modulo_id' => 3,
             'nome' => 'Conte Conosco',
             'slug' => 'tela-conte-conosco',
             'descricao' => 'Tela de Conte Conosco'

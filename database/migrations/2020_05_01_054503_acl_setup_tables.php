@@ -28,14 +28,6 @@ class AclSetupTables extends Migration
             $table->timestamps();
         });
 
-        Schema::create('permissoes', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('nome');
-            $table->string('slug')->unique();
-            $table->string('descricao')->nullable();
-            $table->timestamps();
-        });
-
         Schema::create('modulos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('modulo_id')->nullable()->unsigned();
@@ -57,6 +49,18 @@ class AclSetupTables extends Migration
             $table->timestamps();
 
             $table->foreign('modulo_id')->references('id')->on('modulos')
+                ->onUpdate('cascade')->onDelete('cascade');
+        });
+
+        Schema::create('permissoes', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->bigInteger('tela_id')->unsigned();
+            $table->string('nome');
+            $table->string('slug')->unique();
+            $table->string('descricao')->nullable();
+            $table->timestamps();
+
+            $table->foreign('tela_id')->references('id')->on('telas')
                 ->onUpdate('cascade')->onDelete('cascade');
         });
 
@@ -100,33 +104,6 @@ class AclSetupTables extends Migration
             $table->primary(['usuario_id', 'permissao_id']);
         });
 
-        Schema::create('tela_permissao', function (Blueprint $table) {
-            $table->unsignedBigInteger('tela_id');
-            $table->unsignedBigInteger('permissao_id');
-
-            $table->foreign('tela_id')->references('id')->on('telas')
-                ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('permissao_id')->references('id')->on('permissoes')
-                ->onUpdate('cascade')->onDelete('cascade');
-
-            $table->primary(['tela_id', 'permissao_id']);
-        });
-
-        Schema::create('perfil_tela_permissao', function (Blueprint $table) {
-            $table->bigInteger('perfil_id')->unsigned();
-            $table->bigInteger('tela_id')->unsigned();
-            $table->bigInteger('permissao_id')->unsigned();
-
-            $table->foreign('perfil_id')->references('id')->on('perfis')
-                ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('tela_id')->references('id')->on('telas')
-                ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('permissao_id')->references('id')->on('permissoes')
-                ->onUpdate('cascade')->onDelete('cascade');
-
-            $table->primary(['perfil_id', 'tela_id', 'permissao_id']);
-        });
-
         DB::commit();
     }
 
@@ -138,8 +115,6 @@ class AclSetupTables extends Migration
     public function down()
     {
         // PIVOS
-        Schema::dropIfExists('perfil_tela_permissao');
-        Schema::dropIfExists('tela_permissao');
         Schema::dropIfExists('usuario_permissao');
         Schema::dropIfExists('usuario_perfil');
         Schema::dropIfExists('perfil_permissao');

@@ -56,7 +56,7 @@
                             <div class="col-sm-6">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h6 class="panel-title">Tela</h6>
+                                        <h6 class="panel-title">Telas Vinculadas</h6>
                                     </div>
                                     <div class="panel-body">
                                         <div class="table-responsive">
@@ -66,7 +66,22 @@
                                                     @foreach($modulo->telas as $tela)
                                                         <tr>
                                                             <td>
-                                                                <a href="{{ url('admin/telas', $tela->id) }}" class="label label-info">{{ $tela->nome }}</a>
+                                                                Tela: <a href="{{ url('admin/telas', $tela->id) }}" class="label label-info">{{ $tela->nome }}</a>
+                                                                @if(count($tela->permissoes) > 0)
+                                                                @foreach($tela->permissoes as $perm)
+                                                                    <tr>
+                                                                        <td>
+                                                                            Permissão: <a href="{{ url('admin/permissoes', $perm->id) }}" class="label label-info">{{ $perm->nome }}</a>
+                                                                        </td>
+                                                                    </tr>
+                                                                @endforeach
+                                                            @else
+                                                                <tr>
+                                                                    <td class="text-danger text-center">
+                                                                        <p><strong>{{$tela->nome}} - Nenhuma permissão vinculada</strong></p>
+                                                                    </td>
+                                                                </tr>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -84,46 +99,6 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-6">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h6 class="panel-title">Permissões da Tela</h6>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="table-responsive">
-                                            <table class="table">
-                                                <tbody>
-                                                @if(count($modulo->telas) > 0)
-                                                    @foreach ($modulo->telas as $tela)
-                                                        @if(count($tela->permissoes) > 0)
-                                                            @foreach($tela->permissoes as $perm)
-                                                                <tr>
-                                                                    <td>
-                                                                        <a href="{{ url('admin/permissoes', $perm->id) }}" class="label label-info">{{ $perm->nome }}</a>
-                                                                    </td>
-                                                                </tr>
-                                                            @endforeach
-                                                        @else
-                                                            <tr>
-                                                                <td class="text-danger text-center">
-                                                                    <p><strong>Nenhuma permissão vinculada</strong></p>
-                                                                </td>
-                                                            </tr>
-                                                        @endif
-                                                    @endforeach
-                                                @else
-                                                    <tr>
-                                                        <td class="text-danger text-center">
-                                                            <p><strong>Nenhuma tela vinculada</strong></p>
-                                                        </td>
-                                                    </tr>
-                                                @endif
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
 
                     </div>

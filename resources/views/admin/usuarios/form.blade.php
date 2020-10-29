@@ -20,7 +20,7 @@
     <select multiple class="form-control" name="perfis[]" id="perfis">
         @foreach($perfis as $perfil)
             <option value="{{$perfil->id}}" @if($formMode == 'edit' && in_array($perfil->id, $usuario_perfis))selected="selected"@endif>
-                {{$perfil->nome}}
+                {{$perfil->nome}} -> {{ $perfil->descricao }}
             </option>
         @endforeach
     </select>
@@ -31,7 +31,7 @@
     <select multiple class="form-control" name="permissoes[]" id="permissoes">
         @foreach($permissoes as $perm)
             <option value="{{$perm->id}}" @if($formMode == 'edit' && in_array($perm->id, $usuario_permissoes))selected="selected"@endif>
-                {{$perm->nome}}
+                {{$perm->nome}} -> {{ $perm->descricao }}
             </option>
         @endforeach
     </select>

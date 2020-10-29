@@ -14,7 +14,7 @@ class Modulo extends Model
     protected $table = 'modulos';
 
     protected $fillable = [
-        'nome', 'slug', 'descricao'
+        'modulo_id', 'nome', 'slug', 'descricao'
     ];
 
     public function telas() {
