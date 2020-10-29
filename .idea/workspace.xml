@@ -13,7 +13,12 @@
     <list default="true" id="70d53ae1-9859-48cc-ba68-784e8bf619ee" name="Default Changelist" comment="init">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PerfilController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PerfilController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Model/Acl/Modulo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Acl/Modulo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_01_054503_acl_setup_tables.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_05_01_054503_acl_setup_tables.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/ModulosTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/ModulosTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/TelasTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/TelasTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/perfis/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/perfis/form.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,7 +212,8 @@
       <workItem from="1603718109307" duration="3279000" />
       <workItem from="1603745994748" duration="8554000" />
       <workItem from="1603907155346" duration="3474000" />
-      <workItem from="1603913524116" duration="12846000" />
+      <workItem from="1603913524116" duration="13004000" />
+      <workItem from="1603978988836" duration="8267000" />
     </task>
     <servers />
   </component>

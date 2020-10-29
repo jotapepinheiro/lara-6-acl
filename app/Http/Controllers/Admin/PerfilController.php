@@ -6,6 +6,7 @@ use App\Facades\AclFacade as Acl;
 use App\Http\Controllers\Controller;
 
 use App\Model\Acl\Perfil;
+use App\Model\Acl\Permissao;
 use Illuminate\Http\Request;
 
 class PerfilController extends Controller
@@ -45,7 +46,10 @@ class PerfilController extends Controller
         if((!$auth)){
             return view('home');
         }else{
-            return view('admin.perfis.create');
+            $permissoes = Permissao::all('id', 'nome');
+            $perfil_permissoes = array();
+
+            return view('admin.perfis.create',  compact('permissoes', 'perfil_permissoes'));
         }
     }
 
@@ -63,8 +67,10 @@ class PerfilController extends Controller
                 'descricao' => $request->input('descricao')
             ]);
 
-            foreach ($request->input('permissoes') as $key => $value) {
-                $perfil->attachPermission($value);
+            if ($request->has('permissoes')) {
+                foreach ($request->input('permissoes') as $key => $value) {
+                    $perfil->attachPermission($value);
+                }
             }
 
             return redirect('admin/perfis')->with('flash_message', 'Perfil adicionado!');
@@ -92,8 +98,10 @@ class PerfilController extends Controller
             return view('home');
         }else{
             $perfil = Perfil::findOrFail($id);
+            $permissoes = Permissao::all('id', 'nome');
+            $perfil_permissoes = $perfil->permissoes->pluck('id')->toArray();
 
-            return view('admin.perfis.edit', compact('perfil'));
+            return view('admin.perfis.edit', compact('perfil', 'permissoes', 'perfil_permissoes'));
         }
     }
 
@@ -104,11 +112,17 @@ class PerfilController extends Controller
         if((!$auth)){
             return view('home');
         }else{
-
-            $requestData = $request->all();
+            $inputPerfil = $request->only('nome', 'slug', 'descricao');
 
             $role = Perfil::findOrFail($id);
-            $role->update($requestData);
+            $role->update($inputPerfil);
+
+            $role->permissoes()->sync([]);
+            if ($request->has('permissoes')) {
+                foreach ($request->input('permissoes') as $key => $value) {
+                    $role->attachPermission($value);
+                }
+            }
 
             return redirect('admin/perfis')->with('flash_message', 'Perfil atualizado!');
         }

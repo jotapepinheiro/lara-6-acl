@@ -38,18 +38,26 @@ class AclSetupTables extends Migration
 
         Schema::create('modulos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('modulo_id')->nullable()->unsigned();
             $table->string('nome');
             $table->string('slug')->unique();
             $table->string('descricao')->nullable();
             $table->timestamps();
+
+            $table->foreign('modulo_id')->references('id')->on('modulos')
+                ->onUpdate('cascade')->onDelete('cascade');
         });
 
         Schema::create('telas', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('modulo_id')->unsigned();
             $table->string('nome');
             $table->string('slug')->unique();
             $table->string('descricao')->nullable();
             $table->timestamps();
+
+            $table->foreign('modulo_id')->references('id')->on('modulos')
+                ->onUpdate('cascade')->onDelete('cascade');
         });
 
         /**
@@ -92,18 +100,6 @@ class AclSetupTables extends Migration
             $table->primary(['usuario_id', 'permissao_id']);
         });
 
-        Schema::create('modulo_tela', function (Blueprint $table) {
-            $table->bigInteger('modulo_id')->unsigned();
-            $table->bigInteger('tela_id')->unsigned();
-
-            $table->foreign('modulo_id')->references('id')->on('modulos')
-                ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('tela_id')->references('id')->on('telas')
-                ->onUpdate('cascade')->onDelete('cascade');
-
-            $table->primary(['modulo_id', 'tela_id']);
-        });
-
         Schema::create('tela_permissao', function (Blueprint $table) {
             $table->unsignedBigInteger('tela_id');
             $table->unsignedBigInteger('permissao_id');
@@ -144,7 +140,6 @@ class AclSetupTables extends Migration
         // PIVOS
         Schema::dropIfExists('perfil_tela_permissao');
         Schema::dropIfExists('tela_permissao');
-        Schema::dropIfExists('modulo_tela');
         Schema::dropIfExists('usuario_permissao');
         Schema::dropIfExists('usuario_perfil');
         Schema::dropIfExists('perfil_permissao');

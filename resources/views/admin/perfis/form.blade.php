@@ -17,5 +17,16 @@
 </div>
 
 <div class="form-group">
+    <label for="permissoes">Permissões</label>
+    <select multiple class="form-control" name="permissoes[]" id="permissoes">
+        @foreach($permissoes as $perm)
+            <option value="{{$perm->id}}" @if($formMode == 'edit' && in_array($perm->id, $perfil_permissoes))selected="selected"@endif>
+                {{$perm->nome}}
+            </option>
+        @endforeach
+    </select>
+</div>
+
+<div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">
 </div>
