@@ -52,7 +52,7 @@
                                             @endpermission
 
                                             @permission('perfil-delete')
-                                                @if ($item->slug !== "super")
+                                                @if($item->slug !== "super")
                                                     <form method="POST" action="{{ url('/admin/perfis' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                         {{ method_field('DELETE') }}
                                                         {{ csrf_field() }}
