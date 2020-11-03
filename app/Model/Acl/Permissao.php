@@ -5,6 +5,7 @@ namespace App\Model\Acl;
 use App\Repositories\Contracts\AclPermissaoInterface;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\AclPermissaoTrait;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * Class Permissao
@@ -23,6 +24,9 @@ class Permissao extends Model implements AclPermissaoInterface
         'tela_id', 'nome', 'slug', 'descricao'
     ];
 
+    /**
+     * @return BelongsTo
+     */
     public function tela() {
         return $this->belongsTo(Tela::class, 'tela_id', 'id');
     }

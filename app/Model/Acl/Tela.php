@@ -3,6 +3,8 @@
 namespace App\Model\Acl;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Class Tela
@@ -14,10 +16,20 @@ class Tela extends Model
     protected $table = 'telas';
 
     protected $fillable = [
-        'nome', 'slug', 'descricao'
+        'modulo_id', 'nome', 'slug', 'descricao'
     ];
 
+    /**
+     * @return HasMany
+     */
     public function permissoes() {
         return $this->hasMany(Permissao::class, 'tela_id');
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function modulo() {
+        return $this->belongsTo(Modulo::class, 'modulo_id', 'id');
     }
 }

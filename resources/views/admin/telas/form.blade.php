@@ -17,8 +17,21 @@
 </div>
 
 <div class="form-group">
+    <label for="modulo_id">Módulo da Tela</label>
+    <select class="form-control" name="modulo_id" id="modulo_id">
+        <option value="">--Nenhum--</option>
+        @foreach($modulos as $mod)
+            <option value="{{$mod->id}}" @if($formMode == 'edit' && $mod->id == $tela->modulo_id)selected="selected"@endif>
+                {{$mod->nome}} -> {{$mod->descricao}}
+            </option>
+        @endforeach
+    </select>
+</div>
+
+<div class="form-group">
     <label for="permissoes">Permissões</label>
     <select multiple class="form-control" name="permissoes[]" id="permissoes">
+        <option value="">--Nenhum--</option>
         @foreach($permissoes as $perm)
             <option value="{{$perm->id}}" @if($formMode == 'edit' && in_array($perm->id, $tela_permissoes))selected="selected"@endif>
                 {{$perm->nome}} -> {{$perm->descricao}}

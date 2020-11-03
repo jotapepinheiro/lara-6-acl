@@ -9,6 +9,7 @@ use App\Model\Acl\Permissao;
 use App\Model\Acl\Tela;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class PermissaoController extends Controller
 {
@@ -60,9 +61,23 @@ class PermissaoController extends Controller
             return view('home');
         }else{
 
-            $requestData = $request->all();
+            $validator = Validator::make($request->all(), [
+                'nome' => 'required|max:255',
+                'slug' => 'required|unique:permissoes'
+            ]);
 
-            Permissao::create($requestData);
+            if ($validator->fails()) {
+                return redirect('admin/permissoes')
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+
+            Permissao::create([
+                'tela_id' => $request->input('tela_id'),
+                'nome' => $request->input('nome'),
+                'slug' => $request->input('slug'),
+                'descricao' => $request->input('descricao')
+            ]);
 
             return redirect('admin/permissoes')->with('flash_message', 'Permissão adicionada!');
         }
@@ -104,6 +119,17 @@ class PermissaoController extends Controller
         }else{
 
             $requestData = $request->all();
+
+            $validator = Validator::make($requestData, [
+                'nome' => 'required|max:255',
+                'slug' => 'required|unique:permissoes,slug,' . $id
+            ]);
+
+            if ($validator->fails()) {
+                return redirect('admin/permissoes')
+                    ->withErrors($validator)
+                    ->withInput();
+            }
 
             $permissao = Permissao::findOrFail($id);
             $permissao->update($requestData);

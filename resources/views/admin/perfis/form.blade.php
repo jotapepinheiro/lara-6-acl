@@ -19,6 +19,7 @@
 <div class="form-group">
     <label for="permissoes">Permissões</label>
     <select multiple class="form-control" name="permissoes[]" id="permissoes">
+        <option value="">--Nenhum--</option>
         @foreach($permissoes as $perm)
             <option value="{{$perm->id}}" @if($formMode == 'edit' && in_array($perm->id, $perfil_permissoes))selected="selected"@endif>
                 {{$perm->nome}} -> {{ $perm->descricao }}

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Model\Acl\Perfil;
 use App\Model\Acl\Permissao;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PerfilController extends Controller
 {
@@ -61,6 +62,17 @@ class PerfilController extends Controller
             return view('home');
         }else{
 
+            $validator = Validator::make($request->all(), [
+                'nome' => 'required|max:255',
+                'slug' => 'required|unique:perfis'
+            ]);
+
+            if ($validator->fails()) {
+                return redirect('admin/perfis')
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+
             $perfil = Perfil::create([
                 'nome' => $request->input('nome'),
                 'slug' => $request->input('slug'),
@@ -113,6 +125,17 @@ class PerfilController extends Controller
             return view('home');
         }else{
             $inputPerfil = $request->only('nome', 'slug', 'descricao');
+
+            $validator = Validator::make($inputPerfil, [
+                'nome' => 'required|max:255',
+                'slug' => 'required|unique:perfis,slug,' . $id
+            ]);
+
+            if ($validator->fails()) {
+                return redirect('admin/perfis')
+                    ->withErrors($validator)
+                    ->withInput();
+            }
 
             $role = Perfil::findOrFail($id);
             $role->update($inputPerfil);

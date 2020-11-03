@@ -6,9 +6,8 @@ use App\Facades\AclFacade as Acl;
 use App\Http\Controllers\Controller;
 
 use App\Model\Acl\Modulo;
-use App\Model\Acl\Permissao;
-use App\Model\Acl\Tela;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ModuloController extends Controller
 {
@@ -28,12 +27,12 @@ class ModuloController extends Controller
             $perPage = 25;
 
             if (!empty($keyword)) {
-                $modulos = Modulo::where('nome', 'LIKE', "%$keyword%")
+                $modulos = Modulo::with('pai')->where('nome', 'LIKE', "%$keyword%")
                 ->orWhere('slug', 'LIKE', "%$keyword%")
                 ->orderBy('id')
                 ->latest()->paginate($perPage);
             } else {
-                $modulos = Modulo::orderBy('id')->latest()->paginate($perPage);
+                $modulos = Modulo::with('pai')->orderBy('id')->latest()->paginate($perPage);
             }
 
             return view('admin.modulos.index', compact('modulos'));
@@ -47,7 +46,9 @@ class ModuloController extends Controller
         if((!$auth)){
             return view('home');
         }else{
-            return view('admin.modulos.create');
+            $modulos = Modulo::all('id', 'nome', 'descricao');
+
+            return view('admin.modulos.create', compact('modulos'));
         }
     }
 
@@ -59,7 +60,19 @@ class ModuloController extends Controller
             return view('home');
         }else{
 
+            $validator = Validator::make($request->all(), [
+                'nome' => 'required|max:255',
+                'slug' => 'required|unique:modulos'
+            ]);
+
+            if ($validator->fails()) {
+                return redirect('admin/modulos')
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+
             Modulo::create([
+                'modulo_id' => $request->input('modulo_id'),
                 'nome' => $request->input('nome'),
                 'slug' => $request->input('slug'),
                 'descricao' => $request->input('descricao')
@@ -89,9 +102,10 @@ class ModuloController extends Controller
         if((!$auth)){
             return view('home');
         }else{
-            $modulo = Modulo::with(['telas.permissoes'])->findOrFail($id);
+            $modulo = Modulo::with('telas.permissoes')->findOrFail($id);
+            $modulos = Modulo::all('id', 'nome', 'descricao');
 
-            return view('admin.modulos.edit', compact('modulo'));
+            return view('admin.modulos.edit', compact('modulo', 'modulos'));
         }
     }
 
@@ -104,6 +118,17 @@ class ModuloController extends Controller
         }else{
 
             $requestData = $request->all();
+
+            $validator = Validator::make($requestData, [
+                'nome' => 'required|max:255',
+                'slug' => 'required|unique:modulos,slug,' . $id
+            ]);
+
+            if ($validator->fails()) {
+                return redirect('admin/modulos')
+                    ->withErrors($validator)
+                    ->withInput();
+            }
 
             $modulo = Modulo::findOrFail($id);
             $modulo->update($requestData);

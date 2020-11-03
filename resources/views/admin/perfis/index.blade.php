@@ -9,6 +9,8 @@
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">Perfis</div>
+                    @include('includes.erros')
+
                     <div class="card-body">
                         @permission('perfil-create')
                         <a href="{{ url('/admin/perfis/create') }}" class="btn btn-success btn-sm" title="Adicionar Perfil">

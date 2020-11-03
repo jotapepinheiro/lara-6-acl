@@ -9,6 +9,8 @@
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">Permissões</div>
+                    @include('includes.erros')
+
                     <div class="card-body">
                         @permission('permissao-create')
                         <a href="{{ url('/admin/permissoes/create') }}" class="btn btn-success btn-sm" title="Adicionar Permissão">

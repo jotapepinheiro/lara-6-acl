@@ -9,6 +9,8 @@
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">Perfis</div>
+                    @include('includes.erros')
+
                     <div class="card-body">
                         @permission('tela-create')
                         <a href="{{ url('/admin/telas/create') }}" class="btn btn-success btn-sm" title="Adicionar Tela">
@@ -35,7 +37,7 @@
                             <table class="table table-sm">
                                 <thead>
                                     <tr>
-                                        <th>ID</th><th>Nome</th><th>Slug</th><th>Ações</th>
+                                        <th>ID</th><th>Nome</th><th>Slug</th><th>Módulo</th><th>Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -44,6 +46,11 @@
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->nome }}</td>
                                         <td>{{ $item->slug }}</td>
+                                        @if($item->modulo)
+                                            <td>{{ $item->modulo->nome }}</td>
+                                        @else
+                                            <td>---</td>
+                                        @endif
                                         <td>
                                             <a href="{{ url('/admin/telas/' . $item->id) }}" title=" Ver Tela"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i>  Ver</button></a>
 

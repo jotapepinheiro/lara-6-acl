@@ -180,14 +180,14 @@ class TelasTableSeeder extends Seeder
 
         Tela::create([
             'modulo_id' => 8,
-            'nome' => 'Atos',
+            'nome' => 'Cadastro de Atos',
             'slug' => 'tela-atos',
             'descricao' => 'Tela de Conteúdo de Atos'
         ]);
 
         Tela::create([
             'modulo_id' => 8,
-            'nome' => 'Cadastro',
+            'nome' => 'Cadastro de Conteúdo',
             'slug' => 'tela-conteudo-cadastro',
             'descricao' => 'Tela de Conteúdo de Cadastro'
         ]);

@@ -9,6 +9,8 @@
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">Clientes</div>
+                    @include('includes.erros')
+
                     <div class="card-body">
                         @permission('cliente-create')
                         <a href="{{ url('/admin/clientes/create') }}" class="btn btn-success btn-sm" title="Adicionar Cliente">

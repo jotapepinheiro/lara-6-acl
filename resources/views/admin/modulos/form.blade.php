@@ -17,5 +17,17 @@
 </div>
 
 <div class="form-group">
+    <label for="modulo_id">Módulo Pai</label>
+    <select class="form-control" name="modulo_id" id="modulo_id">
+        <option value="">--Nenhum--</option>
+        @foreach($modulos as $mod)
+            <option value="{{$mod->id}}" @if($formMode == 'edit' && $mod->id == $modulo->modulo_id)selected="selected"@endif>
+                {{$mod->nome}} -> {{$mod->descricao}}
+            </option>
+        @endforeach
+    </select>
+</div>
+
+<div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">
 </div>

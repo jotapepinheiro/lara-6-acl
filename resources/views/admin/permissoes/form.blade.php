@@ -19,6 +19,7 @@
 <div class="form-group">
     <label for="tela_id">Telas</label>
     <select class="form-control" name="tela_id" id="tela_id">
+        <option value="">--Nenhum--</option>
         @foreach($telas as $tela)
             <option value="{{$tela->id}}" @if($formMode == 'edit' && $tela->id == $permissao->tela->id)selected="selected"@endif>
                 {{$tela->nome}} -> {{$tela->descricao}}

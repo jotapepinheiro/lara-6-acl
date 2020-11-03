@@ -22,10 +22,10 @@
     @if($user = Acl::user())
         <script>
             window.Laravel = {!! json_encode([
-        'csrfToken' => csrf_token(),
-        'perfis' => Acl::user()->perfis->pluck('slug')->toJson(),
-        'permissoes' => Acl::user()->permissoes->pluck('slug')->toJson()
-    ]) !!};
+                'csrfToken' => csrf_token(),
+                'perfis' => Acl::user()->perfis->pluck('slug')->toJson(),
+                'permissoes' => Acl::user()->permissoes->pluck('slug')->toJson()
+            ]) !!};
         </script>
     @endif
 
