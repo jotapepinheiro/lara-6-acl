@@ -11,27 +11,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70d53ae1-9859-48cc-ba68-784e8bf619ee" name="Default Changelist" comment="init">
-      <change afterPath="$PROJECT_DIR$/resources/views/includes/erros.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/lara-6-acl.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/lara-6-acl.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ModuloController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ModuloController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PerfilController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PerfilController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PermissaoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PermissaoController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/TelaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/TelaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Model/Acl/Modulo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Acl/Modulo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Model/Acl/Permissao.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Acl/Permissao.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Model/Acl/Tela.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Acl/Tela.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/TelasTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/TelasTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/clientes/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/clientes/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/modulos/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/modulos/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/modulos/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/modulos/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/perfis/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/perfis/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/perfis/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/perfis/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/permissoes/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/permissoes/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/permissoes/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/permissoes/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/telas/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/telas/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/telas/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/telas/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,7 +213,7 @@
       <workItem from="1603978988836" duration="20713000" />
       <workItem from="1604063571349" duration="1532000" />
       <workItem from="1604072773528" duration="10756000" />
-      <workItem from="1604408538178" duration="136000" />
+      <workItem from="1604408538178" duration="2412000" />
     </task>
     <servers />
   </component>

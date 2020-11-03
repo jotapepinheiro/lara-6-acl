@@ -48,10 +48,9 @@ class TelaController extends Controller
         if((!$auth)){
             return view('home');
         }else{
-            $permissoes = Permissao::all('id', 'nome', 'descricao');
             $modulos = Modulo::all('id', 'nome', 'descricao');
 
-            return view('admin.telas.create',  compact('permissoes', 'modulos'));
+            return view('admin.telas.create',  compact('modulos'));
         }
     }
 
@@ -74,20 +73,14 @@ class TelaController extends Controller
                     ->withInput();
             }
 
-            $tela = Tela::create([
+            Tela::create([
                 'modulo_id' => $request->input('modulo_id'),
                 'nome' => $request->input('nome'),
                 'slug' => $request->input('slug'),
                 'descricao' => $request->input('descricao')
             ]);
 
-            if ($request->has('permissoes')) {
-                foreach ($request->input('permissoes') as $key => $value) {
-                    $tela->attachPermission($value);
-                }
-            }
-
-            return redirect('admin/telas')->with('flash_message', 'Módulo adicionado!');
+            return redirect('admin/telas')->with('flash_message', 'Tela adicionada!');
         }
     }
 
@@ -111,12 +104,10 @@ class TelaController extends Controller
         if((!$auth)){
             return view('home');
         }else{
-            $tela = Tela::findOrFail($id);
-            $permissoes = Permissao::all('id', 'nome');
-            $tela_permissoes = $tela->permissoes->pluck('id')->toArray();
+            $tela = Tela::with('permissoes')->findOrFail($id);
             $modulos = Modulo::all('id', 'nome', 'descricao');
 
-            return view('admin.telas.edit', compact('tela', 'permissoes', 'tela_permissoes', 'modulos'));
+            return view('admin.telas.edit', compact('tela', 'modulos'));
         }
     }
 
@@ -142,13 +133,6 @@ class TelaController extends Controller
 
             $tela = Tela::findOrFail($id);
             $tela->update($inputTela);
-
-            $tela->permissoes()->sync([]);
-            if ($request->has('permissoes')) {
-                foreach ($request->input('permissoes') as $key => $value) {
-                    $tela->attachPermission($value);
-                }
-            }
 
             return redirect('admin/telas')->with('flash_message', 'Tela atualizada!');
         }

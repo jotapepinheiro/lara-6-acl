@@ -28,17 +28,42 @@
     </select>
 </div>
 
-<div class="form-group">
-    <label for="permissoes">Permissões</label>
-    <select multiple class="form-control" name="permissoes[]" id="permissoes">
-        <option value="">--Nenhum--</option>
-        @foreach($permissoes as $perm)
-            <option value="{{$perm->id}}" @if($formMode == 'edit' && in_array($perm->id, $tela_permissoes))selected="selected"@endif>
-                {{$perm->nome}} -> {{$perm->descricao}}
-            </option>
-        @endforeach
-    </select>
+@if($formMode === 'edit')
+    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h6 class="panel-title">Permissões do Tela</h6>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table">
+                <tbody>
+                @if(count($tela->permissoes) > 0)
+                    @foreach($tela->permissoes as $perm)
+                        <tr>
+                            <td>
+                                <a href="{{ url('admin/permissoes', $perm->id) }}" class="label label-info">{{ $perm->nome }}</a>
+                            </td>
+                            <td>
+                                {{ $perm->slug }}
+                            </td>
+                            <td>
+                                {{ $perm->descricao }}
+                            </td>
+                        </tr>
+                    @endforeach
+                @else
+                    <tr>
+                        <td class="text-danger text-center">
+                            <p><strong>Nenhuma permissão vinculada</strong></p>
+                        </td>
+                    </tr>
+                @endif
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
+@endif
 
 <div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">
