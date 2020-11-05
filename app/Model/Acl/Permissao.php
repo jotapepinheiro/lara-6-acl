@@ -4,7 +4,7 @@ namespace App\Model\Acl;
 
 use App\Repositories\Contracts\AclPermissaoInterface;
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\AclPermissaoTrait;
+use App\Traits\Acl\AclPermissaoTrait;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**

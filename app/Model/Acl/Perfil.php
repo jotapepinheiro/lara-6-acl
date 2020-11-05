@@ -4,7 +4,7 @@ namespace App\Model\Acl;
 
 use App\Repositories\Contracts\AclPerfilInterface;
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\AclPerfilTrait;
+use App\Traits\Acl\AclPerfilTrait;
 
 /**
  * Class Perfil

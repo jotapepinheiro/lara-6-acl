@@ -4,7 +4,7 @@ namespace App\Model\Acl;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\Traits\AclPermissaoUsuarioTrait;
+use App\Traits\Acl\AclPermissaoUsuarioTrait;
 
 /**
  * Class Usuario

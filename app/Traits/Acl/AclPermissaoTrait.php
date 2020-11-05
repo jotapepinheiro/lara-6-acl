@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Traits;
+namespace App\Traits\Acl;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use App\Model\Acl\Permissao;
