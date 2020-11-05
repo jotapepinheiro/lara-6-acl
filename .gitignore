@@ -11,3 +11,4 @@ yarn-error.log
 /.idea
 composer.lock
 /.DS_Store
+/.idea/workspace.xml

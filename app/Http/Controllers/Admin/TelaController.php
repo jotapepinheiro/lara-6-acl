@@ -6,7 +6,6 @@ use App\Facades\AclFacade as Acl;
 use App\Http\Controllers\Controller;
 
 use App\Model\Acl\Modulo;
-use App\Model\Acl\Permissao;
 use App\Model\Acl\Tela;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
