@@ -28,7 +28,7 @@ class UsuarioController extends Controller
             $perPage = 25;
 
             if (!empty($keyword)) {
-                $usuarios = Usuario::where('name', 'LIKE', "%$keyword%")
+                $usuarios = Usuario::where('nome', 'LIKE', "%$keyword%")
                 ->orWhere('email', 'LIKE', "%$keyword%")
                 ->orWhere('password', 'LIKE', "%$keyword%")
                 ->orderBy('id')
@@ -63,7 +63,7 @@ class UsuarioController extends Controller
             return view('home');
         }else{
 
-            $inputUser = $request->only('name', 'email', 'password');
+            $inputUser = $request->only('nome', 'email', 'telefone', 'status', 'password');
             $inputUser['password'] = app('hash')->make($inputUser['password']);
 
             $usuario = Usuario::create($inputUser);
@@ -122,7 +122,7 @@ class UsuarioController extends Controller
             return view('home');
         }else{
 
-            $inputUser = $request->only('name', 'email', 'password');
+            $inputUser = $request->only('nome', 'email', 'telefone', 'status',  'password');
             $inputUser['password'] = app('hash')->make($inputUser['password']);
 
             $usuario = Usuario::findOrFail($id);

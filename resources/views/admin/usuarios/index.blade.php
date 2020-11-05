@@ -35,14 +35,14 @@
                             <table class="table table-sm">
                                 <thead>
                                     <tr>
-                                        <th>ID</th><th>Name</th><th>Email</th><th>Ações</th>
+                                        <th>ID</th><th>Nome</th><th>E-mail</th><th>Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($usuarios as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ $item->name }}</td><td>{{ $item->email }}</td>
+                                        <td>{{ $item->nome }}</td><td>{{ $item->email }}</td>
                                         <td>
                                             <a href="{{ url('/admin/usuarios/' . $item->id) }}" title="Ver Usuário"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i>  Ver</button></a>
 

@@ -18,8 +18,10 @@ class UsuariosTableSeeder extends Seeder
     {
         // CADATRAR SUPER ADMIN
         Usuario::create([
-            'name'              => 'Super',
+            'nome'              => 'Super',
             'email'             => 'super@super.com',
+            'telefone'          => '65999999999',
+            'status'            => 1,
             'password'          => app('hash')->make('super'),
             'email_verified_at' => Carbon::now()->add(1, 'hour'),
             'created_at'        => Carbon::now()
@@ -27,8 +29,10 @@ class UsuariosTableSeeder extends Seeder
 
         // CADATRAR ADMIN
         $admin = Usuario::create([
-            'name'        => 'Admin',
+            'nome'        => 'Admin',
             'email'       => 'admin@admin.com',
+            'telefone'    => '65999999999',
+            'status'      => 1,
             'password'    => app('hash')->make('admin'),
             'email_verified_at' => Carbon::now()->add(2, 'hour'),
             'created_at'  => Carbon::now()
@@ -38,8 +42,10 @@ class UsuariosTableSeeder extends Seeder
 
         // CADATRAR TECNICO
         $tecnico = Usuario::create([
-            'name'        => 'Tecnico',
+            'nome'        => 'Tecnico',
             'email'       => 'tecnico@tecnico.com',
+            'telefone'    => '65999999999',
+            'status'      => 1,
             'password'    => app('hash')->make('tecnico'),
             'email_verified_at' => Carbon::now()->add(2, 'hour'),
             'created_at'  => Carbon::now()
@@ -55,8 +61,10 @@ class UsuariosTableSeeder extends Seeder
             $date = Carbon::now()->subDays(rand(1, 28))->subMonth(rand(1, 12));
 
             Usuario::create([
-                'name'     => $faker->name,
+                'nome'     => $faker->name,
                 'email'    => $faker->unique()->safeEmail,
+                'telefone' => '65999999999',
+                'status'   => 1,
                 'password' => app('hash')->make('123456'),
                 'email_verified_at' => Carbon::parse($date)->addHour(rand(1, 12)),
                 'created_at'  => $date,

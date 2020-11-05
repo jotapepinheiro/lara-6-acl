@@ -31,9 +31,25 @@
                             <table class="table">
                                 <tbody>
                                     <tr>
-                                        <th>ID</th><td>{{ $usuario->id }}</td>
+                                        <th>ID</th>
+                                        <td>{{ $usuario->id }}</td>
                                     </tr>
-                                    <tr><th>Name </th><td> {{ $usuario->name }} </td></tr><tr><th> Email </th><td> {{ $usuario->email }} </td></tr><tr><th> Password </th><td> {{ $usuario->password }} </td></tr>
+                                    <tr>
+                                        <th>Name</th>
+                                        <td>{{ $usuario->nome }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>E-mail</th>
+                                        <td>{{ $usuario->email }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Telefone</th>
+                                        <td>{{ $usuario->telefone }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Status</th>
+                                        <td>{{ $usuario->status }}</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

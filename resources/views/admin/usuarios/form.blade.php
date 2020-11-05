@@ -1,19 +1,26 @@
-<div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}">
-    <label for="name" class="control-label">{{ 'Name' }}</label>
-    <input class="form-control" name="name" type="text" id="name" value="{{ isset($usuario->name) ? $usuario->name : ''}}" >
-    {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
+<div class="form-group {{ $errors->has('nome') ? 'has-error' : ''}}">
+    <label for="nome" class="control-label">{{ 'Nome' }}</label>
+    <input class="form-control" name="nome" type="text" id="nome" value="{{ isset($usuario->nome) ? $usuario->nome : ''}}" >
+    {!! $errors->first('nome', '<p class="help-block">:message</p>') !!}
 </div>
+
 <div class="form-group {{ $errors->has('email') ? 'has-error' : ''}}">
-    <label for="email" class="control-label">{{ 'Email' }}</label>
+    <label for="email" class="control-label">{{ 'E-mail' }}</label>
     <input class="form-control" name="email" type="text" id="email" value="{{ isset($usuario->email) ? $usuario->email : ''}}" >
     {!! $errors->first('email', '<p class="help-block">:message</p>') !!}
 </div>
+
+<div class="form-group {{ $errors->has('telefone') ? 'has-error' : ''}}">
+    <label for="telefone" class="control-label">{{ 'Telefone' }}</label>
+    <input class="form-control" name="telefone" type="text" id="telefone" value="{{ isset($usuario->telefone) ? $usuario->telefone : ''}}" >
+    {!! $errors->first('telefone', '<p class="help-block">:message</p>') !!}
+</div>
+
 <div class="form-group {{ $errors->has('password') ? 'has-error' : ''}}">
     <label for="password" class="control-label">{{ 'Password' }}</label>
     <input class="form-control" name="password" type="text" id="password" value="{{ isset($usuario->password) ? $usuario->password : ''}}" >
     {!! $errors->first('password', '<p class="help-block">:message</p>') !!}
 </div>
-
 
 <div class="form-group">
     <label for="perfis">Perfil</label>

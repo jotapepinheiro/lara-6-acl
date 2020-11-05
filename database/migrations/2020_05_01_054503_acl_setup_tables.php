@@ -120,9 +120,9 @@ class AclSetupTables extends Migration
         Schema::dropIfExists('perfil_permissao');
 
         // TABELAS
+        Schema::dropIfExists('permissoes');
         Schema::dropIfExists('telas');
         Schema::dropIfExists('modulos');
-        Schema::dropIfExists('permissoes');
         Schema::dropIfExists('perfis');
     }
 }
