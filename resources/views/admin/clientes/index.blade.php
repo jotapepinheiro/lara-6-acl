@@ -5,7 +5,7 @@
         <div class="row">
             @include('includes.sidebar')
 
-            @role(['super', 'tecnico', 'user'])
+            @role(['super', 'admin', 'admin-sga'])
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">Clientes</div>
@@ -37,7 +37,7 @@
                             <table class="table table-sm">
                                 <thead>
                                     <tr>
-                                        <th>ID</th><th>Name</th><th>Email</th>@role('super', 'manager')<th>Ações</th>@endrole
+                                        <th>ID</th><th>Name</th><th>Email</th>@role(['super', 'admin', 'admin-sga'])<th>Ações</th>@endrole
                                     </tr>
                                 </thead>
                                 <tbody>

@@ -5,7 +5,7 @@
         <div class="row">
             @include('includes.sidebar')
 
-            @role(['super', 'tecnico'])
+            @role(['super', 'admin', 'admin-sga'])
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">Editar Cliente #{{ $cliente->id }}</div>

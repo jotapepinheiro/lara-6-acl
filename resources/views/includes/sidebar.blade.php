@@ -89,7 +89,7 @@
                 </li>
             </ul>
             @endrole
-            @role('tecnico')
+            @role(['admin-sga', 'admin-fornecedor'])
             <ul class="nav" role="tablist">
                 <li role="presentation">
                     <a href="{{ url('/admin/clientes') }}">
@@ -98,7 +98,7 @@
                 </li>
             </ul>
             @endrole
-            @role('user')
+            @role('convidado')
             <ul class="nav" role="tablist">
                 <li role="presentation">
                     <a href="{{ url('/admin/clientes') }}">
