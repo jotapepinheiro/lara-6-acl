@@ -63,7 +63,7 @@ class UsuarioController extends Controller
             return view('home');
         }else{
 
-            $inputUser = $request->only('nome', 'email', 'telefone', 'status', 'password');
+            $inputUser = $request->only('nome', 'email', 'telefone', 'celular', 'status', 'password');
             $inputUser['password'] = app('hash')->make($inputUser['password']);
 
             $usuario = Usuario::create($inputUser);
@@ -122,8 +122,9 @@ class UsuarioController extends Controller
             return view('home');
         }else{
 
-            $inputUser = $request->only('nome', 'email', 'telefone', 'status',  'password');
+            $inputUser = $request->only('nome', 'email', 'telefone', 'celular', 'status',  'password');
             $inputUser['password'] = app('hash')->make($inputUser['password']);
+            $inputUser['status'] = $request->has('status') ? 1 : 0;
 
             $usuario = Usuario::findOrFail($id);
             $usuario->update($inputUser);

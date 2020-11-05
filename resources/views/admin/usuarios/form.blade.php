@@ -16,10 +16,25 @@
     {!! $errors->first('telefone', '<p class="help-block">:message</p>') !!}
 </div>
 
+<div class="form-group {{ $errors->has('celular') ? 'has-error' : ''}}">
+    <label for="celular" class="control-label">{{ 'Celular' }}</label>
+    <input class="form-control" name="celular" type="text" id="celular" value="{{ isset($usuario->celular) ? $usuario->celular : ''}}" >
+    {!! $errors->first('celular', '<p class="help-block">:message</p>') !!}
+</div>
+
 <div class="form-group {{ $errors->has('password') ? 'has-error' : ''}}">
-    <label for="password" class="control-label">{{ 'Password' }}</label>
+    <label for="password" class="control-label">{{ 'Senha' }}</label>
     <input class="form-control" name="password" type="text" id="password" value="{{ isset($usuario->password) ? $usuario->password : ''}}" >
     {!! $errors->first('password', '<p class="help-block">:message</p>') !!}
+</div>
+
+<div class="form-check" {{ $errors->has('status') ? 'has-error' : ''}}>
+    @if ($usuario->status === 1)
+        <input type="checkbox" class="form-check-input" id="status" name="status" checked="">
+    @else
+        <input type="checkbox" class="form-check-input" id="status" name="status" {{ old('status') ? 'checked' : '' }} >
+    @endif
+    <label class="form-check-label" for="status">Status</label>
 </div>
 
 <div class="form-group">

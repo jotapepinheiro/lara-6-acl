@@ -17,8 +17,9 @@ class CreateUsuariosTable extends Migration
             $table->bigIncrements('id');
             $table->string('nome');
             $table->string('email')->unique();
-            $table->string('telefone')->nullable();
-            $table->smallInteger('status')->default(1);
+            $table->string('telefone', 20)->nullable();
+            $table->string('celular', 20)->nullable();
+            $table->tinyInteger('status')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

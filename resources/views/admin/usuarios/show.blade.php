@@ -47,6 +47,10 @@
                                         <td>{{ $usuario->telefone }}</td>
                                     </tr>
                                     <tr>
+                                        <th>Celular</th>
+                                        <td>{{ $usuario->celular }}</td>
+                                    </tr>
+                                    <tr>
                                         <th>Status</th>
                                         <td>{{ $usuario->status }}</td>
                                     </tr>
